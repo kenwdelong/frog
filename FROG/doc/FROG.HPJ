@@ -1,0 +1,66 @@
+[OPTIONS]
+TITLE=FROG
+CONTENTS=Main_Window
+COPYRIGHT=Copyright ©
+LCID=0x409 0x0 0x0
+CNT=FROG.CNT
+COMPRESS=10
+
+[WINDOWS]
+main=,,,,(128,255,255)
+
+[FILES]
+FROG.RTF
+
+[MAP]
+FROG_Error 44
+FROG_Error_Graph 30
+First_Guess_Field 23
+Test_Calibration_Window 47
+TADPOLE_Results_Window 42
+FROGAlgorithm_calibations 1
+Publications 15
+Reference_Field_Calibrations 49
+History_of_FROG_Retrievals 32
+XFROG_Algorithm 46
+FROG_Program_Introduction 14
+4M7GWQ 11
+TADPOLE_Output_Tab 39
+5YAK3U 38
+Double_Pulse 7
+Raw_Data_Window 9
+Optical_Nonlinearity 8
+Outputs_Tab 22
+Algorithm_Control 6
+Experimental_FROG_Trace 19
+XFROG_Overview 45
+TADPOLE_Algorithm_Windows 40
+Input_Data_for_Read_In_Field 25
+_6YR3W 33
+TADPOLE_Overview 34
+Marginals 20
+Strategies_Tab 24
+Main_Window 0
+Results_Window 4
+TADPOLE_Experimental_Data_Window 43
+Data_Source 3
+Output_Files 5
+Generate_From_Theory 18
+FROG_Pulse_Retrieval_Windows 27
+XFROG_Nonlinearities 48
+Grid_Size 12
+HEADER 10
+Experimental_Data_Tab 21
+Electric_Field_and_Spectrum_Windows 29
+Initial_Field_Generation 17
+1.H.WLI 13
+TADPOLE_Reference_Tab 37
+Read_In_Field 2
+FROG_Sampling_Rate 26
+TADPOLE_Calibrations 35
+FROG_Trace_Windows 28
+Maximum_Time_Bandwidth_Products 16
+FFT_Data_Window 41
+Tadpole_Inputs_Tab 36
+FROG_Algorithm_Overview 31
+

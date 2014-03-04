@@ -1,0 +1,42 @@
+FROG version 3.2.5-dev
+Femtosoft Technologies
+All Rights Reserved
+Copyright 1996-2011
+
+License Agreement
+
+You should carefully read the following terms and conditions
+before using this software.  Your use of this
+software you indicates your acceptance of this license agreement
+and warranty.
+
+
+Registered Version
+
+We hereby grant you a nonexclusive license to use one copy of the
+software on any single computer, provided the Software is in use on
+only one computer at any time. The Software 
+
+One licensed copy of FROG may either be used by a single
+person who uses the software personally on one or more computers,
+or installed on a single workstation used nonsimultaneously by
+multiple people, but not both.  If multiple people will use FROG on
+different computers, you must purchase a copy of FROG for each 
+computer.
+
+We remain the owner of all right, title and interest in the software
+and documentation. 
+
+
+Disclaimer of Warranty
+
+THIS SOFTWARE AND THE ACCOMPANYING FILES ARE SOLD "AS IS" AND
+WITHOUT WARRANTIES AS TO PERFORMANCE OF MERCHANTABILITY OR ANY
+OTHER WARRANTIES WHETHER EXPRESSED OR IMPLIED. NO WARRANTY OF 
+FITNESS FOR A PARTICULAR PURPOSE IS OFFERED.
+
+Good data processing procedure dictates that any program be
+thoroughly tested with non-critical data before relying on it.
+The user must assume the entire risk of using the program.  ANY
+LIABILITY OF THE SELLER WILL BE LIMITED EXCLUSIVELY TO PRODUCT
+REPLACEMENT OR REFUND OF PURCHASE PRICE.

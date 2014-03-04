@@ -1,0 +1,1200 @@
+{\rtf1\ansi\deff2
+{\fonttbl{\f0\fnil MS Sans Serif;}{\f1\froman Symbol;}{\f2\fswiss Arial;}{\f3\fmodern Courier New;}{\f4\froman Times New Roman;}}
+{\colortbl;\red0\green0\blue255;}
+{\stylesheet{\fs36 \snext0 Normal;}
+}\pard\plain
+{\up $}{\footnote\pard\plain{\up $} Algorithm Control}
+{\up #}{\footnote\pard\plain{\up #} Algorithm_Control}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Algorithm Control;Current Error;FROG Error;Stop the algorithm}
+\fs36\cf1 Algorithm Control\plain\fs24 
+\par \pard 
+\par \fs20 The algorithm control window has three buttons and two text display boxes.  The left button initially has the caption "Begin."  When you press this, the algorithm will begin operation.  The caption on this button changes to "Pause," and pressing it now will allow you to pause the algorithm in order to examine intermediate results.  In Pause mode, the button caption changes to "Resume," and can be used to resume normal operation of the algorithm.
+\par 
+\par \{bmc bm0.BMP\}
+\par 
+\par While the algorithm is running, the right button says "Stop."  If pressed the algorithm will cease retrieving the pulse from the FROG trace.  The \uldb Results\plain\fs20 {\v Results_Window} screen will be updated, and the \uldb output files\plain\fs20 {\v Output_Files} will be saved.  If the algorithm is stopped, the right button says "Quit."  Pressing it will close all the windows associated with the FROG algorithm.\fs24 
+\par \pard \fs20 
+\par The FROG program incorporates several different \uldb strategies\plain\fs20 {\v Strategies_Tab} to retrieve the pulse.  The name of the current strategy is displayed in the Current Strategy box.  These strategies are described in the \uldb published literature\plain\fs20 {\v Publications}.
+\par 
+\par The Force Change button will force the FROG algorithm to change the current strategy.  This is useful when a strategy is converging very slowly.  The algorithm will continue with a strategy as long as it is making a certain amount of progress, but often speed can be gained by switching from a slowly-converging strategy to one that converges more quickly.
+\par \pard 
+\par The FROG error box displays the current iteration number, as well as the current \uldb FROG error\plain\fs20 {\v FROG_Error}.  After "Stop" is pressed, it also shows the lowest overall FROG error achieved during this run of the program.
+\par 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Double Pulse}
+{\up #}{\footnote\pard\plain{\up #} Double_Pulse}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Double Pulse;Relative height;Relative phase;Separation}
+\fs36\cf1 Double Pulse\plain\fs24 
+\par \pard \fs20 
+\par The \uldb field generation facility\plain\fs20 {\v Generate_From_Theory} allows for the addition of a double pulse.  The double pulse is coherently added to the primary pulse after all of the phase distortions have been applied to each pulse independently.  The available parameters include all of the parameters available to the main pulse, plus three that are available only for the double pulse:
+\par 
+\par \{bmc bm1.BMP\}
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Relative Phase\plain\fs20  - sets the relative phase of the second pulse with respect to the first.
+\par 
+\par \b Relative Height\plain\fs20  - sets the peak intensity of the second pulse, with the peak of the first pulse (before phase distortions) being unity.
+\par 
+\par \b Separation\plain\fs20  - the separation of the peaks of the primary pulse and the double pulse.\fs24 
+\par \pard \fs20 
+\par The shape of the double pulse is the same as that of the original pulse.  The units on the \b Double Pulse\plain\fs20  screen will adjust according to the primary domain and whether real or pixel units are being used.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Electric Field and Spectrum Windows}
+{\up #}{\footnote\pard\plain{\up #} Electric_Field_and_Spectrum_Windows}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Displays;Displays,electric fields;Electric Field and Spectrum Windows;Phase scale}
+\fs36\cf1 Electric Field and Spectrum Windows\plain\fs24 
+\par \pard \fs20 
+\par While the algorithm is retrieving a pulse, the field windows appear next to the FROG trace windows.  The upper window displays the laser pulse's electric field in the time domain, while the lower one displays the frequency domain.
+\par 
+\par \{bmc bm2.BMP\}
+\par 
+\par When \uldb generating an electric field from theory\plain\fs20 {\v Generate_From_Theory}, or \uldb reading in a field from disk\plain\fs20 {\v Read_In_Field}, the field windows display two fields at the same time - both the original (target) field and the current retrieved field.  In the case of a target FROG trace that is experimentally generated, the electric field of the original pulse is not known beforehand, so only the retrieved field is plotted in the field windows.  The different colors are used as follows:
+\par \pard \fs24 
+\par \pard\li715\fi-355 \fs20 Black - original field intensity
+\par Blue - original field phase
+\par Green - retrieved field intensity
+\par Red - retrieved field phase\fs24 
+\par \pard \fs20 
+\par The intensity scale is always normalized to a peak of unity with no loss of information, but the phase scale cannot be normalized in this way.  Therefore, at the bottom of each window, the scale of the phase is reported.  For example, if the window says "Max. phase : 2.5 radians," this means that (on that particular iteration) the phase plotted in the window ranges from 0 to 2.5 rad.  Often, the phase will appear to be unchanged from one iteration to the next, but the phase scale is actually changing.
+\par \pard 
+\par In order to keep the screen output uncluttered, the phase is not plotted for areas where the intensity of the pulse is less than 0.0001 of the peak.  When \uldb written to disk\plain\fs20 {\v Output_Files}, however, the entire field is output.
+\par \fs24 
+\par \pard\sb115 \b\fs20 Copying and Printing the Field Windows\plain\fs24 
+\par \pard \fs20 
+\par Right-clicking on the Field windows will bring up a pop-up menu with the options "Print" and Copy".  "Print" will send the image of the fields to the printer, while "Copy" will send the image to the Clipboard.  These functions perform a direct bitmap copy, and as such are relatively rudamentory.  If more control is needed over the output, it is better to use the \uldb output files\plain\fs20 {\v 5YAK3U}.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Experimental Data Tab}
+{\up #}{\footnote\pard\plain{\up #} Experimental_Data_Tab}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Constant Frequeny Bins;Constant Wavelength Bins;Experimental Data Tab;File Format;File Format,experimental FROG traces;Header;Header,experimental data;Increment Sizes;Order}
+\fs36\cf1 Experimental Data Tab\plain\fs24 
+\par \pard \fs20 
+\par The Experimental Data tab allows the user to specify the data file that contains the FROG trace data to be used, and the calibrations used to read the data into the program.  Once all of the parameters have been entered and OK is selected, the data will be read into the program and the \uldb Raw Data\plain\fs20 {\v Raw_Data_Window} window will appear.
+\par 
+\par \{bmc bm3.BMP\}\fs24 
+\par 
+\par \b\fs28 Parameters\plain\fs24 
+\par \fs20 
+\par These parameters are necessary for the program to properly use an experimentally generated FROG trace.  These parameters can either be entered by hand, or they can be put in the \uldb data file's header\plain\fs20 {\v HEADER}.  See below for \uldb file format requirements\plain\fs20 {\v HEADER}.
+\par \pard \fs24 
+\par \pard\li715\fi-355 \b\fs20 Number of Delay Points\plain\fs20  - the number of data pixels along the time delay axis in the raw data.  For example, if the experiment generated data at 30 distinct delays, then the number of delay points in the raw data is 30.
+\par \b Number of Wavelength Points\plain\fs20  - the number of data pixels along the wavelength axis in the raw data.
+\par \fs24 
+\par \pard \b\ul\fs20 NOTE:\plain\fs20  do not confuse the \uldb grid size\plain\fs20 {\v Grid_Size} with the number of points in the experimental data set.  Whereas the former must be a power of 2, the latter can be any number, depending on the details of the experiment.  The \uldb Raw Data\plain\fs20 {\v Raw_Data_Window} window will take care of formatting the data for the algorithm on the chosen grid size.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Delay Increment\plain\fs20  - the spacing, in femtoseconds, between adjacent pixels of the data along the delay axis.
+\par \b Wavelength Increment\plain\fs20  - enter the spacing, in nanometers, between adjacent pixels of the data along the wavelength axis.\fs24 
+\par \pard \fs20 
+\par Only one of the following two values need be entered.  The FROG program will calculate the other after the value is entered.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Wavelength of Center Pixel\plain\fs20  - the wavelength of the pixel at the center of the wavelength axis.  For example, if there are 400 data points along the wavelength axis, enter the wavelength of pixel 200 (using zero-based counting of the pixels - i.e., the first pixel is pixel 0).  Be sure to use the actual wavelength of the signal field.  For example, for an SHG FROG trace of a laser pulse centered at 800 nm, the wavelength of the center pixel should be somewhere near 400 nm, not 800 nm.
+\par \b Wavelength of First Pixel\plain\fs20  - the wavelength corresponding to pixel number zero (the first data point in the file).  If you enter this number directly, the FROG program will automatically calculate the center wavelength for you.\fs24 
+\par \pard \fs20 
+\par \fs24 
+\par \b\fs28 Order Radio Box\plain\fs24 
+\par \fs20 
+\par Normally, the data is read in with the wavelength changing the fastest, i.e., the data points are in the order (Delay 0, Wavelength 0), (Delay 0, Wavelength 1), etc.  This is known as Wavelength order  However, if the data are stored such that the delay axis is changing the fastest, click Delay in the Order box.  More on \uldb data format\plain\fs20 {\v HEADER} below.
+\par \fs24 
+\par \b\fs28 Read In As Radio Box\plain\fs24 
+\par \fs20 
+\par Normally, the FROG program assumes that the input data is binned in constant wavelength bins (as a grating spectrometer would do).  However, this may not always be the case.  If the input FROG data is on a constant frequency spacing (either because it's been gridded by another program, or perhaps it is the output of a previous run of the FROG program), click "Constant Frequency."
+\par \pard \fs24 
+\par \b\fs28 The Use Header Information Check Box\plain\fs24 
+\par \fs20 
+\par Click on the Use Header Information check box to read in the data calibrations listed in the file's header.  The data values read in will be displayed in the appropriate boxes.  If, after clicking, you realize that the file did not have a header, simply unclick the Use Header Information check box.  The values will be cleared and the data input will proceed from the beginning of the file.
+\par 
+\par \fs24 
+\par {\up #}{\footnote\pard\plain{\up #} HEADER}
+\b\fs28 Headers and Data File Format\plain\fs24 
+\par \pard \fs20 
+\par Entering the experimental calibrations by hand can become tedious.  Thus, FROG allows you to store these values in the header of the data file, so that they can be read in automatically and reliably.  To use a header with your data, make the first five values in the data file correspond to:
+\par 
+\par Number of delay points
+\par Number of wavelength points
+\par Delay Increment
+\par Wavelength increment
+\par Wavelength of center pixel
+\par Data. . . 
+\par 
+\par These values were defined above.  When Wavelength is selected in the Order box, the structure of the data block is such that the wavelength varies the fastest.  In other words, the data has the structure
+\par \pard 
+\par (Delay 0, Wavelength 0)
+\par (Delay 0, Wavelength 1)
+\par (Delay 0, Wavelength 2)
+\par . . .
+\par (Delay 0, Wavelength NWav - 1)
+\par (Delay 1, Wavelength 0)
+\par (Delay 1, Wavelength 1)
+\par etc.
+\par 
+\par If Delay is checked in the Order box, the data will be read in with the following order:
+\par (Delay 0, Wavelength 0)
+\par (Delay 1, Wavelength 0)
+\par (Delay 2, Wavelength 0)
+\par . . .
+\par (Delay NTau - 1, Wavelength 0)
+\par (Delay 0, Wavelength 1)
+\par (Delay 1, Wavelength 1)
+\par etc.
+\par \fs24 
+\par \fs20 
+\par The data values can be separated by any white space (a space, tab, or new line [carriage return]).
+\par 
+\par Here is an example header (don't include the text comments!):
+\par 128            // Delay points
+\par 450            // Wavelength points
+\par 10             // fs per pixel
+\par \pard\tx355 0.123        // nm per pixel
+\par 413.7        // wavelength of center pixel
+\par 1.420\tab -2.030\tab 1.0\tab -1.200\tab 0.000   // data
+\par \fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Experimental FROG Trace}
+{\up #}{\footnote\pard\plain{\up #} Experimental_FROG_Trace}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Data source;Data source,experimental FROG Trace;Experimental FROG Trace}
+\fs36\cf1 Experimental FROG Trace\plain\fs24 
+\par \pard \fs20 
+\par The "Experimental FROG Trace" Data Source option allows the use of experimentally generated FROG traces as the target trace.  
+\par 
+\par \{bmc bm4.SHG\}
+\par 
+\par Selecting Experimental FROG Trace will present the user with five tabs that can be used to control the execution of the FROG algorithm.
+\par \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 Exp. Data\plain\fs20 {\v Experimental_Data_Tab} - sets the options for reading in the experimental FROG trace, its calibrations, etc.
+\par 
+\par \uldb Marginals\plain\fs20 {\v Marginals} - sets the input files necessary for calculating the frequency marginal, for comparison against the frequency marginal of the experimental trace.
+\par 
+\par \uldb Outputs\plain\fs20 {\v Outputs_Tab} - selects the directory for the \uldb output files\plain\fs20 {\v Output_Files} of the program.
+\par 
+\par \uldb First Guess\plain\fs20 {\v First_Guess_Field} - selects the field to be used as the starting field for the retrieval.
+\par 
+\par \uldb Strategies\plain\fs20 {\v Strategies_Tab} - controls the strategies used by the FROG retrieval algorithm.\fs24 
+\par \pard \fs20 
+\par After the OK button is pressed, the experimental data is read into the program and the \uldb Raw Data\plain\fs20 {\v Raw_Data_Window} screen appears.
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FFT Data Window}
+{\up #}{\footnote\pard\plain{\up #} FFT_Data_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} FFT Data Window;TADPOLE Algorithm;TADPOLE cutoff}
+\fs36\cf1 FFT Data Window\plain\fs24 
+\par \pard \fs20 
+\par The operation of the TADPOLE algorithm is controlled from the FFT Data window.
+\par 
+\par \{bmc bm5.BMP\}
+\par 
+\par The \uldb TADPOLE algorithm\plain\fs20 {\v TADPOLE_Overview} works by Fourier transforming the TADPOLE data, and then removing the DC term and one of the side lobes.  The black vertical line in the FFT Data window shows where the cutoff is in this filtering operation.  For example, in the above picture, everything to the left of the vertical black line is set to zero before inverse Fourier transforming.  Above the graph, the temporal coordinate of the cutoff line is shown (1539 fs in this case).  Clicking on the FFT Data window with the mouse will set the cutoff line to the position of the mouse cursor.  If the cutoff line is to the left of zero delay, everything to the right of it will be set to zero, and vice versa.  Usually, the cutoff line should be set at the lowest point between the sidelobe and the DC term.
+\par \pard 
+\par Clicking the right mouse button on this graph will allow the user to toggle the vertical axis between a logarithmic scale and a linear scale.
+\par  
+\par The TADPOLE algorithm can be used to calculate just the spectral phase of the test pulse, or both the intensity and the phase.  Calculating the spectral intensity of the test pulse involves dividing two small but nearly equal numbers, an operation that is very sensitive to noise.  When calculating the spectral intensity as well as the phase, the Floor input box (upper right-hand corner) becomes active.  This allows the user to select a cutoff value below which the spectral division will not be performed (the result is set automatically to zero for values lower than the cutoff).  There is no \i a priori\plain\fs20  method to select a Floor value; only the form of the output spectrum can be a guide here.  If the spectrum has large "wings" that seem to grow far from the center frequency, increase the value of Floor by a factor of 10 or so, and press the "Run" button.
+\par \pard 
+\par Usually, it is best to measure the spectrum of the test pulse in the laboratory, and use that measurement as the spectral intensity.  The spectrum of the test pulse is selected on the \uldb TADPOLE Inputs tab\plain\fs20 {\v Tadpole_Inputs_Tab}.
+\par 
+\par The TADPOLE algorithm executes either when the cutoff line is moved (as a result of a mouse click) or when the "Run" button is clicked.  The widths, time-bandwidths products, etc., of the resultant field are written to the TADPOLE Results window.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Algorithm Calibrations}
+{\up #}{\footnote\pard\plain{\up #} FROGAlgorithm_calibations}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Data source;FROG Algorithms Calibrations Window;Grid Size;Optical Nonlinearity}
+\fs36\cf1 FROG Algorithm Calibrations\plain\fs24 
+\par \pard 
+\par \fs20 After starting FROG, The left side of the FROG Algorithm Calibrations window allows you to set three parameters that control the global behavior of the FROG algorithm.  These parameters are the Nonlinearity (NLO), the Data Source, and the Grid Size.
+\par 
+\par Once the algorithm parameters have been entered, click OK, and the \uldb FROG Pulse Retrieval\plain\fs20 {\v FROG_Pulse_Retrieval_Windows} screens will appear.
+\par 
+\par \fs24 
+\par \b\fs28 Nonlinearity (NLO)\plain\fs24 
+\par \fs20 
+\par Select the type of \uldb optical nonlinearity\plain\fs20 {\v Optical_Nonlinearity} used to generate the FROG trace from the electric field.  \fs24 
+\par 
+\par {\up #}{\footnote\pard\plain{\up #} Data_Source}
+\b\fs28 Data Source\plain\fs24 
+\par \fs20 
+\par The Data Source radio buttons allow the user to select the source of the original field and/or FROG trace.  Selecting a different data source will present different tabs on the right-hand side of the screen to set the behavior of the FROG algorithm.  There are three choices for Data Source:
+\par \pard \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 Generate from Theory\plain\fs20 {\v Generate_From_Theory} - allows the user to supply parameters such as pulse width, chirp, etc., that the FROG program then uses to generate the laser pulse and the FROG trace.\fs24 
+\par \fs20 
+\par \uldb Experimental FROG Trace\plain\fs20 {\v Experimental_FROG_Trace} - reads in a FROG trace from disk.  Use this to analyze experimentally generated data.\fs24 
+\par \fs20 
+\par \uldb Read In Field from File\plain\fs20 {\v Read_In_Field} - reads in an electric field from disk.  Use this to create FROG traces of electric fields that are stored in a file.  These fields can be created by the FROG program, or by any other program.\fs24 
+\par \pard \fs20 
+\par \fs24 
+\par {\up #}{\footnote\pard\plain{\up #} Grid_Size}
+\b\fs28 Grid Size\plain\fs24 
+\par \fs20 
+\par Select the number of points \f4\i N\plain\fs20  used to generate the FROG trace.  Usually a value of 64 or 128 is sufficient.  As \f4\i N\plain\fs20  increases, pulses of larger complexity can be represented on the FROG trace without being truncated.  A transform-limited Gaussian pulse barely fits on an \f4\i N\plain\fs20  = 16 size trace.  However, remember that the speed of the algorithm decreases line \i N\plain\fs20 *\i N\plain\fs20 *ln(\i N\plain\fs20 ), so that doubling the number of points reduces the speed of the algorithm by more than a factor of 4.  It is thus wise to run with as small a number of points as possible.
+\par \pard 
+\par The \uldb maximum time-bandwidth product\plain\fs20 {\v Maximum_Time_Bandwidth_Products} pulses that can fit on a FROG trace with a given grid size are reported elsewhere.
+\par 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Algorithm Overview}
+{\up #}{\footnote\pard\plain{\up #} FROG_Algorithm_Overview}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Convergence;FROG Algorithm Overview;FROG Error;Initial Field}
+\fs36\cf1 FROG Algorithm Overview\plain\fs24 
+\par \pard \fs20 
+\par In the FROG program, we represent laser pulses by the complex electric field envelope of the laser pulse (slowly-varying amplitude approximation).  Every laser pulse envelope corresponds to a FROG trace.  It is trivial to calculate the FROG trace given the electric field of the pulse; however, inverting the FROG trace to find the electric field is a mathematical problem that has no analytic, closed form solution.
+\par 
+\par The FROG algorithm uses an iterative algorithm to invert FROG traces to find the electric field that created them.  It applies a series of \uldb retrieval strategies\plain\fs20 {\v Strategies_Tab} based on phase retrieval (these techniques are described in DeLong and Trebino, JOSA A \b 11\plain\fs20 , 2429 (1994), and DeLong et al., Opt. Lett. \b 19\plain\fs20 , 2152 (1994)).  The algorithm begins with a initial guess for the electric field.  On each subsequent iteration of the algorithm, a new copy of the retrieved electric field and its FROG trace is generated.  Once the retrieved FROG trace matches the original FROG trace to a satisfactory degree, the algorithm is halted.
+\par \pard 
+\par It is left to the user to decide when to stop the algorithm.  By watching the value of the \uldb FROG error\plain\fs20 {\v FROG_Error}, and also by visually comparing the original FROG trace to the retrieved one, the user can judge either when the agreement is satisfactory, or when the algorithm has hit the noise floor (as set by noise in the experimental data).  In general, for a 64 X 64 pixel FROG trace, a FROG error of 0.0001 can be considered excellent convergence (the error should get smaller with larger traces, as the square root of N).  The user should experiment with stopping the algorithm at various places.
+\par \pard 
+\par Convergence for experimentally generated FROG traces will always be limited by noise and systematic errors (no matter how small) in the data, so that in this case the algorithm should be allowed to continue until it is clear that the minimum error has been reached.  For FROG traces generated from theory or from electric fields read in from disk, the algorithm will usually converge practically to machine precision.  In this case the user must decide when to halt the algorithm.  When the original and retrieved traces are visually indistinguishable, it does little good to continue running the algorithm.
+\par \pard 
+\par When the algorithm finishes, the field that produced the lowest \uldb FROG error\plain\fs20 {\v FROG_Error} is used for the \uldb Results\plain\fs20 {\v Results_Window} and \uldb Output\plain\fs20 {\v Output_Files}.
+\par 
+\par The nomenclature that we will use is to call the original FROG trace the "target" FROG trace, and to refer to the new trace and electric field generated on each iteration of the algorithm as "retrieved" quantities.
+\par 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Error}
+{\up #}{\footnote\pard\plain{\up #} FROG_Error}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} FROG Error}
+\fs36\cf1 FROG Error\plain\fs24 
+\par \pard \fs20 
+\par The FROG error is basically an rms difference between the target FROG trace and the current retrieved FROG trace.  The target FROG trace is normalized to a peak intensity of unity.
+\par 
+\par In the case of experimental data, noise is inevitable.  The peak pixel of the target FROG trace may be artificially high, due to corruption by noise.  If we simply normalized the retrieved trace to unity as well, the FROG error would be wrong.  Therefore, we minimize the FROG error G for a given retrieved FROG trace by minimizing with respect to \f1 a\f2  :
+\par \pard \fs24 
+\par \f4\fs20 \{bmc bm6.WMF\}.
+\par 
+\par \f2 This is the definition of the FROG error used in the FROG program.\fs24 
+\par \fs20 
+\par 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Error Graph}
+{\up #}{\footnote\pard\plain{\up #} FROG_Error_Graph}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Current Error;FROG Error;FROG Error Graph}
+\fs36\cf1 FROG Error Graph\plain\fs24 
+\par \pard \fs20 
+\par A running graph of the FROG error vs. iteration displayed while the algorithm is retrieving a pulse.  This is done mainly as a convenience for the user who is monitoring the progress of the algorithm.  The visual display helps to decide when the algorithm has reached its minimum error.  When the algorithm changes techniques, the name of the technique will be displayed along a red line that shows at which iteration it began.
+\par 
+\par \{bmc bm7.BMP\}
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Program Introduction}
+{\up #}{\footnote\pard\plain{\up #} FROG_Program_Introduction}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Convergence;FROG Program Introduction;Tutorial}
+\fs36\cf1 FROG Program Introduction\plain\fs24 
+\par \pard 
+\par \fs20 If this is your first time running FROG, you can get a good idea of the program by running a simple example.
+\par 
+\par Click on the small button labeled "F" near the top left of the screen.  This will display the \uldb FROG Algorithm Calibrations window\plain\fs20 {\v FROGAlgorithm_calibations}.  Click "OK".  Now we are ready to run the algorithm.  But first, let's review the windows on this screen.
+\par 
+\par On the top left, we see the PG FROG trace of our initial transform-limited Gaussian pulse.  Below it is the (quite irregular) FROG trace of the algorithm's initial guess for the retrieved field.  This initial field is by default a pulse with Gaussian intensity and random phase.  Next to these two traces are the original and retrieved fields in both the time domain (top) and frequency domain (bottom).  For the color coding of the various traces, see the \uldb FROG Trace Windows\plain\fs20 {\v FROG_Trace_Windows} or \uldb Electric Field and Spectrum Windows\plain\fs20 {\v Electric_Field_and_Spectrum_Windows} items.  On the bottom left is the \uldb Results window\plain\fs20 {\v Results_Window}, while on the bottom right is a graph that will show the FROG error as a function of iteration.  Above it is the \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} window, which allows you to control the progress of the algorithm.
+\par \pard 
+\par Click "Begin" on the \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} window.  The algorithm begins to run.  On each iteration, it constructs a new guess for the retrieved field, and generates an error for that field, based on the rms difference between the original (target) FROG trace and the FROG trace of the current retrieved field.  The field graphs are updated on each iteration, and the retrieved FROG trace graph is updated every 5 iterations when the number of iterations is greater than 10.
+\par 
+\par Allow the algorithm to run until you are satisfied with the agreement between the original and retrieved FROG trace.  In general, an error of 0.0001 or less usually gives excellent agreement (no visible distinction between the original and retrieved FROG traces).  When using (inevitably noisy) experimental data, the error will generally not progress this low, and visual agreement of the two traces (coupled with the inability of the algorithm to achieve any lower FROG errors) usually signals that it is time to stop the algorithm.  The algorithm saves the field that achieved the lowest overall error, so don't worry if the error goes up sometimes.  The algorithm may try different starting points to see if it can achieve lower error, so don't be surprised if the error jumps up somewhat during various algorithms.  Experience has proved that all of these strategies are useful at some time, but rarely are they all effective on a single data set.
+\par \pard 
+\par The program will switch between several strategies printing the names in a box on the \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} window and putting a red line on the FROG error graph.  A description of these \uldb strategies\plain\fs20 {\v Strategies_Tab} is available in the \uldb literature\plain\fs20 {\v Publications}.
+\par 
+\par When you are satisfied with the convergence of the algorithm, click "Stop" on the \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} window.  The program will now display the retrieved field (and trace) that had the lowest overall error in all the previous iterations.\fs24 
+\par \fs20 
+\par Now you can either click "Quit" on the Algorithm Control window, or click the "F" again to start anew.
+\par \pard 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Pulse Retrieval Windows}
+{\up #}{\footnote\pard\plain{\up #} FROG_Pulse_Retrieval_Windows}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} FROG Pulse Retrieval Windows}
+\fs36\cf1 FROG Pulse Retrieval Windows\plain\fs24 
+\par \pard \fs20 
+\par When retrieving a pulse, the program presents several screens that allow the user to monitor the progress of the algorithm.
+\par 
+\par \{bmc bm8.SHG\}
+\par 
+\par The windows include:
+\par \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 Target FROG Trace\plain\fs20 {\v FROG_Trace_Windows}: the original FROG trace that the algorithm is trying to match.
+\par 
+\par \uldb Retrieved FROG Trace\plain\fs20 {\v FROG_Trace_Windows}: the FROG trace of the current retrieved field.
+\par 
+\par \uldb Electric Field\plain\fs20 {\v Electric_Field_and_Spectrum_Windows}: shows the intensity and phase of the retrieved and original (if available) electric fields in the time domain.
+\par 
+\par \uldb Spectrum\plain\fs20 {\v Electric_Field_and_Spectrum_Windows}: shows the intensity and phase of the retrieved and original (if available) electric fields in the frequency domain.\fs24 
+\par \fs20 
+\par \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control}: controls the starting, stopping, and pausing of the algorithm.
+\par \pard\li715\fi-355 
+\par \uldb FROG Error Graph\plain\fs20 {\v FROG_Error_Graph}: plots the FROG error versus iteration.
+\par 
+\par \uldb Results\plain\fs20 {\v Results_Window}: displays the widths and time-bandwidth products of the original pulse (if applicable) and the retrieved pulse.
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Sampling Rate}
+{\up #}{\footnote\pard\plain{\up #} FROG_Sampling_Rate}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} FROG Sampling Rate;Sampling rate}
+\fs36\cf1 FROG Sampling Rate\plain\fs24 
+\par \pard \fs20 
+\par FROG is a time-frequency technique.  This leads not only to the elegance and richness of FROG, but also some counter-intuitive behavior.
+\par 
+\par For example, it's clear that when measuring a quantity like an autocorrelation, decreasing the time step of the data always results in a better measurement.  However, in FROG, this is not always true.  Sampling too densely in either the time or frequency domain may actually make the trace more difficult to retrieve.  Although there is no mathematical proof, it appears that a trace that is sampled nearly equally in both domains provides the most robust retrieval.  Even sampling also allows the trace to be retrieved on a minimum sized grid, leading to a quicker retrieval.
+\par \pard 
+\par The optimum sampling rate \i M\plain\fs20  is defined as the rate that samples the electric field at the same rate in both the time and frequency domain.  For example, if \i M\plain\fs20  = 10, then the time step is one-tenth of the temporal FWHM, and the spectral step size is one-tenth of the spectral FWHM.  A simple calculation yields\fs24 
+\par \f4\fs20 \{bmc bm9.WMF\}\f2\fs24 
+\par \fs20 
+\par For a transform-limited Gaussian pulse this simplifies to \fs24 
+\par \f4\fs20 \{bmc bm10.WMF\}\f2\fs24 
+\par \fs20 
+\par For example, for a 64 X 64 trace, \i M\plain\fs20  = 5.3.  This means that a pulse with a 100 fs FWHM should be sampled every 19 fs.
+\par \pard 
+\par For a pulse with Gaussian intensity in the frequency domain, the maximum value for the time step is\fs24 
+\par \f4\fs20 \{bmc bm11.WMF\}\f2\fs24 
+\par \fs20 
+\par and the minimum time step value for a pulse with a Gaussian temporal intensity is\fs24 
+\par \f4\fs20 \{bmc bm12.WMF\}.\f2\fs24 
+\par \fs20 
+\par 
+\par The FROG sampling rate is discussed in detail in Kenneth W. DeLong, David N. Fittinghoff, and Rick Trebino, "Practical Issues in Ultrashort-Laser-Pulse Measurement Using Frequency-Resolved Optical Gating," \i IEEE Journ. Quant. Electr\plain\fs20 ., vol. \b 32\plain\fs20 , 1253-1264 (1996).\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} FROG Trace Windows}
+{\up #}{\footnote\pard\plain{\up #} FROG_Trace_Windows}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Color Table;Displays;Displays,FROG traces;FROG trace windows}
+\fs36\cf1 FROG Trace Windows\plain\fs24 
+\par \pard 
+\par \fs20 When the program is retrieving a pulse, two windows containing FROG traces are shown on the left hand side of the screen.  The upper trace is the Target FROG Trace.  This is the original trace that the FROG program is attempting to invert.  Below it is the Retrieved FROG Trace, which is the FROG trace of the current retrieved electric field for that iteration.  When these two traces are identical, the FROG algorithm has converged.
+\par 
+\par \{bmc bm13.BMP\}
+\par 
+\par The retrieved FROG trace window is updated every iteration for the first 10 iterations, and every fifth iteration after that.  This speeds the algorithm, as drawing the screen is a slow operation.
+\par \pard 
+\par The FROG trace windows can be selected and copied to the clipboard when the algorithm is paused, or after it has finished.  The windows can also be resized while the algorithm is running.  FROG traces are shown in the standard format, with delay along the horizontal axis and frequency along the vertical axis.
+\par \fs24 
+\par \pard\sb115 \b\fs20 Copying and Printing the FROG Trace Windows\plain\fs24 
+\par \pard \fs20 
+\par Right-clicking on the Field windows will bring up a pop-up menu with the options "Print" and Copy".  "Print" will send the image of the fields to the printer, while "Copy" will send the image to the Clipboard.  These functions perform a direct bitmap copy, and as such are relatively rudamentory.  If more control is needed over the output, it is better to use the \uldb output files\plain\fs20 {\v 5YAK3U}.\fs24 
+\par 
+\par \b\fs28 FROG Trace Color Table\plain\fs24 
+\par \fs20 
+\par In order to enhance the important wings of the trace, the square root of the intensity is plotted in the FROG windows.  The color table used has 100 entries, so that the cutoff between the black (lowest) areas and the red areas is at an intensity of 0.0001 of the peak intensity of the trace.  Except for high-precision, high-dynamic-range measurements, values smaller than this are usually not significant.
+\par \pard \fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} First Guess Field}
+{\up #}{\footnote\pard\plain{\up #} First_Guess_Field}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Convergence;Convergence,difficulty in SHG;First Guess Field;Initial Field}
+\fs36\cf1 First Guess Field\plain\fs24 
+\par \pard \fs20 
+\par The FROG algorithm retrieves pulses from the FROG trace by iteratively improving an electric field that serves as an approximation to the correct field.  The algorithm needs an initial field to begin with.  The First Guess tab provides some control over this field.
+\par 
+\par In most cases, the selection of the initial field will not have a large effect in how the pulse is retrieved or in the final answer.  On rare occasions, however, we have noticed an effect for \uldb SHG\plain\fs20 {\v Optical_Nonlinearity} FROG.  There are certain pulses (even \uldb theoretically generated\plain\fs20 {\v Generate_From_Theory} ones) that appear to stagnate for certain initial guesses, yet retrieve with ease for other initial guesses.  Although this is quite uncommon, FROG provides a way of changing the initial field to improve retrieval when these cases arise.
+\par \pard 
+\par \{bmc bm14.BMP\}
+\par 
+\par There are four possibilities for the initial field:
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Pure Noise\plain\fs20 : the real and imaginary parts of the initial field are filled with uncorrelated white noise.
+\par 
+\par \b Phase Noise\plain\fs20 : this is the default.  The intensity of the initial guess is a Gaussian with a FWHM equal to the square root of the size of the FROG grid (so that a 64 X 64 FROG grid uses a pulse with a FWHM of 8).  The phase of the initial guess is random noise.
+\par 
+\par \b Intensity Noise\plain\fs20 : the phase of the initial guess is zero (imaginary part is always zero), but the intensity is random (i.e., the real part of the field is filled with random numbers).
+\par \pard\li715\fi-355 
+\par \b Custom\plain\fs20 : the initial field is constructed from the user's input.  The width, linear chirp, and SPM (Self-Phase Modulation) are determined by the user, and the initial field is generated from them.  The intensity is Gaussian.\fs24 
+\par \pard \fs20 
+\par Limited experience suggests that for SHG traces that do not converge with a Phase Noise initial guess, an Intensity Noise or a transform-limited Gaussian (custom) often works well.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Generate From Theory}
+{\up #}{\footnote\pard\plain{\up #} Generate_From_Theory}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Data source;Data source,generate from theory;Generate From Theory}
+\fs36\cf1 Generate From Theory\plain\fs24 
+\par \pard \fs20 
+\par When "Generate From Theory" is selected as the data source, parameters describing an electric field can be input into the program.  The FROG program will then generate an electric field from these parameters.
+\par 
+\par \{bmc bm15.SHG\}
+\par 
+\par There are four tabs that are available to control the operation of the FROG algorithm when Generate From Theory is selected:
+\par \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 Initial Field\plain\fs20 {\v Initial_Field_Generation} - used to input the parameters that govern the generation of the initial electric field.\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \uldb \fs20 Outputs\plain\fs20 {\v Outputs_Tab} - selects the directory for the output files of the program.
+\par 
+\par \uldb First Guess\plain\fs20 {\v First_Guess_Field} - selects the field to be used as the starting field for the retrieval.
+\par 
+\par \uldb Strategies\plain\fs20 {\v Strategies_Tab} - controls the strategies used by the FROG retrieval algorithm.\fs24 
+\par \pard \fs20 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} History of FROG Retrievals}
+{\up #}{\footnote\pard\plain{\up #} History_of_FROG_Retrievals}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} FROG Error;History of FROG Retrievals;Log}
+\fs36\cf1 History of FROG Retrievals\plain\fs24 
+\par \pard \fs20 
+\par Especially when retrieving experimental data, often it is necessary to try several different combinations of retrieval parameters (noise subtraction and filtering, data extraction, strategy ordering, etc) in order to get the lowest possible error.  It is cumbersome to try to keep track of all of the possible options manually.  The history log is a feature of the FROG program that does this for the user.  The history log is accessed by pressing the speed button marked "L" on the main FROG window.
+\par \pard 
+\par \{bmc bm16.BMP\}
+\par 
+\par Every time a FROG retrieval is performed, another line is added to the History log.  The History log records the type of nonlinearity, the grid size, the data file, and also the resulting temporal FWHM of the field and the FROG error of the lowest-error field.
+\par 
+\par By selecting a row on the History log, and clicking the "Display Log" button, a window appears showing all the information about that particular run (it includes all the information usually included in the \uldb frog.dat\plain\fs20 {\v _6YR3W} file).
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Initial Field Generation}
+{\up #}{\footnote\pard\plain{\up #} Initial_Field_Generation}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Calculation sequence;Generating Pulses;Initial Field Generation;Pixel Units;Primary Domain;Real Units;Typical Values;Units}
+\fs36\cf1 Initial Field Generation\plain\fs24 
+\par \pard \fs20 
+\par The FROG program contains quite an extensive facility for generating pulses from user input values.  The Initial Field tab provides this ability.  This screen is a little complicated at first glance, but it is not difficult to use.  If a user wishes to make a pulse of even greater complexity than can be achieved using this facility, the best method is to create the field with a custom program, write it to disk, and use the \uldb Read-In Field\plain\fs20 {\v Read_In_Field} capability.
+\par 
+\par \{bmc bm17.BMP\}
+\par \fs24 
+\par \b\fs28 Domains and Units\plain\fs24 
+\par \pard \fs20 
+\par At the top of this screen there are two sets of radio buttons that control how the input data is interpreted.
+\par 
+\par The \b Primary Domain\plain\fs20  box has two selections: time and frequency.  The primary domain of the pulse is where the pulse width and linear chirp are set.  Also, a \uldb double pulse\plain\fs20 {\v Double_Pulse} can be added only in the primary domain of the pulse.  Phase distortions can still be added in the other domain; however, the primary domain phase distortions are added first, then the pulse is Fourier transformed and the phase distortions of the other domain are added.
+\par \pard 
+\par The \b Units\plain\fs20  radio box switches the program between using unnormalized pixel units and real units (fs and nm).  In the pixel unit mode, all units in both domains are measured in pixels.  In real mode, the labels of the appropriate input boxes change to fs- and nm-based units.  In the real mode, the pixel spacing must also be decided.  This value can only be set in the primary domain (this value sets itself automatically to an appropriate value based on the pulse width specified, unless the user overrides this by entering another value).  Also, the center wavelength must be specified.  Frequencies are always calculated in angular (not linear) units.
+\par \pard 
+\par \fs24 
+\par \b\fs28 Pulse Input Parameters\plain\fs24 
+\par \fs20 
+\par Shape - three shapes are available, Gaussian, Super Gaussian (4th power), and Sech^2.
+\par 
+\par Width - specifies the FWHM of the pulse intensity in the primary domain (before phase distortions are added).
+\par 
+\par Chirp - sets the linear chirp (quadratic phase).
+\par 
+\par SPM - self-phase modulation, adds a phase that is proportional to the intensity.  The value entered here is the phase added at the peak intensity.
+\par 
+\par Cubic Phase - adds a cubic phase.
+\par \pard 
+\par Quartic Phase - adds a quartic phase.
+\par 
+\par \uldb Double Pulse\plain\fs20 {\v Double_Pulse} - adds a double pulse in the primary domain.
+\par 
+\par \fs24 
+\par \b\fs28 Pulse Calculation Sequence\plain\fs24 
+\par \fs20 
+\par \b Time Domain
+\par \plain\fs24 
+\par \fs20 All time units are in fs.
+\par 
+\par First, the time domain parameters are used:
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm18.WMF\}\f2\fs24 
+\par \pard \fs20 
+\par where A(t) is the pulse shape.  For Gaussian pulses,
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm19.WMF\},\f2\fs24 
+\par \pard \fs20 
+\par for Sech^2 pulses
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm20.WMF\},\f2\fs24 
+\par \pard \fs20 
+\par and for Super Gaussian pulses is
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm21.WMF\}.\f2\fs24 
+\par \pard \fs20 
+\par Then the field is Fourier transformed and the frequency-domain phase distortions are added.
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm22.WMF\}\f2\fs24 
+\par \pard \fs20 
+\par The field is then Fourier transformed back into the time domain.
+\par 
+\par \b Frequency domain\plain\fs24 
+\par \fs20 
+\par All frequencies are in inverse fs, and are angular (not linear) frequencies.
+\par 
+\par First, the frequency domain phase distortions are introduced:
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm23.WMF\}\f2\fs24 
+\par \pard \fs20 
+\par where the definition of A(f) for the different pulse shapes is similar to A(t).  The field is then transformed to the time domain and the temporal phase distortions are applied:
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm24.WMF\}.\f2\fs24 
+\par \pard \fs20 
+\par \fs24 
+\par \b\fs28 Typical Values\plain\fs24 
+\par \fs20 
+\par In order to become more familiar with the various pulse phase distortions, we offer here some typical values to begin your exploration with.  The table is in Pixel Units.
+\par 
+\par \fs24 
+\par \trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \b\fs20 Phase distortion\plain\fs24 \cell\pard \pard\intbl\qc\box\brdrs \b\fs20 Primary Domain\plain\fs24 \cell\pard \pard\intbl\qc\box\brdrs \b\fs20 Width\plain\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 Linear Chirp: -0.04\cell\pard \pard\intbl\qc\box\brdrs Time\cell\pard \pard\intbl\qc\box\brdrs 10\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 SPM: 3\cell\pard \pard\intbl\qc\box\brdrs Time\cell\pard \pard\intbl\qc\box\brdrs 10\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 Temporal Cubic Phase: 0.004\cell\pard \pard\intbl\qc\box\brdrs Time\cell\pard \pard\intbl\qc\box\brdrs 10\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 Spectral Cubic Phase: 0.003\cell\pard \pard\intbl\qc\box\brdrs Frequency\cell\pard \pard\intbl\qc\box\brdrs 10\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 Spectral Quartic Phase: 0.0002\cell\pard \pard\intbl\qc\box\brdrs Frequency\cell\pard \pard\intbl\qc\box\brdrs 10\fs24 \cell\intbl\row
+\pard \fs20 
+\par 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Input Data for Read-In Field}
+{\up #}{\footnote\pard\plain{\up #} Input_Data_for_Read_In_Field}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Downsizing;File Format;File Format,read-in field;Header;Header,read-in field;Input Data for Read-In Field;Interpolate;Truncate}
+\fs36\cf1 Input Data for Read-In Field\plain\fs24 
+\par \pard \fs20 
+\par The FROG algorithm can begin with a target FROG trace that is calculated from an electric field stored in a file.  This field may have been made by FROG or any other program.
+\par 
+\par \{bmc bm25.BMP\}
+\par -\fs24 
+\par \b\fs28 Calibrations\plain\fs24 
+\par \fs20 
+\par Only one calibration is require for reading in an electric field.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Center Wavelength\plain\fs20  - this is the wavelength of the carrier frequency that the field is centered at.  (The electric fields used in this program are all slowly-varying complex envelopes.  To get a real electric field, a carrier frequency must be added).  If the field data were Fourier transformed, this is the wavelength that would corresponds to the zero frequency value.
+\par \fs24 
+\par \pard \b\fs28 Downsizing Options\plain\fs24 
+\par \fs20 
+\par This option is used if the number of points in the electric field to be read in is larger than the \uldb grid size\plain\fs20 {\v Grid_Size}.  This option determines how the field will be fit onto the grid.  If the interpolate option is selected, the electric field will be reduced in size by using a windowed average to average adjacent points together.  The truncate option will simply discard the results at the beginning and end of the file.  For example, if the electric field file has 128 points, and the grid size is 64, then interpolate will average the points in the file pairwise, while truncate will only read points 32 to 95.  If the grid size is larger than the number of points in the file, the field will be padded with zeroes.
+\par \pard 
+\par \fs24 
+\par \b\fs28 Use Header Information Check Box\plain\fs24 
+\par \fs20 
+\par Checking this box will cause the FROG program to read the center wavelength from the data file header.  Unchecking the box will clear the value and reset the file input to the beginning of the file.
+\par 
+\par \fs24 
+\par {\up #}{\footnote\pard\plain{\up #} 4M7GWQ}
+\b\fs28 Header and File Format\plain\fs24 
+\par \fs20 
+\par The header of the file consists of the central wavelength, followed by the actual data::
+\par 
+\par Center Wavelength
+\par Data. . .
+\par 
+\par The data block has the format
+\par time1 intensity1 phase1 real1 imaginary1
+\par time2 intensity2 phase2 real2 imaginary2
+\par \pard etc.
+\par 
+\par The program ignores the second and third values in each line, and constructs the electric field from the last two columns (the real and imaginary parts of the electric field).  This is the same format used for \uldb output\plain\fs20 {\v Output_Files} of the FROG results, so that files generated by the FROG program can then be read back in.  The time units for the first column are in femtoseconds.  The center wavelength refers to the carrier frequency of the electric field.  Data that is generated numerically should have the carrier frequency removed (leaving just the slowly-varying envelope).
+\par \pard \fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Main Window}
+{\up #}{\footnote\pard\plain{\up #} Main_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Default Window Positions;Main Window;Window Positions}
+\fs36\cf1 Main Window\plain\fs24 
+\par \pard 
+\par \fs20 Near the top left of the main window, there are three small buttons that can be used to start the various algorithms.  These buttons perform the same action as the menu items under the "Run" menu.  If you purchased a version of FROG without TADPOLE or XFROG, some of these buttons may be missing.
+\par 
+\par \{bmc bm26.SHG\}
+\par 
+\par The button labeled "F" starts the \uldb FROG algorithm\plain\fs20 {\v FROGAlgorithm_calibations}.
+\par 
+\par The button labeled "L" shows a \uldb log\plain\fs20 {\v History_of_FROG_Retrievals} of all the FROG retrievals since the program was started.
+\par 
+\par The button labeled "T" starts the \uldb TADPOLE algorithm\plain\fs20 {\v TADPOLE_Calibrations}.
+\par \pard 
+\par The button labeled "X" starts the \uldb XFROG algorithm\plain\fs20 {\v XFROG_Algorithm}.
+\par \fs24 
+\par \pard\sb115 \b\fs20 Windows menu item\plain\fs24 
+\par \pard 
+\par \fs20 The Windows menu item allows the user to switch between custom window positions and default window positions.  The FROG program will remember the positions (and sizes) of most of the windows in the program.  It will save these positions and sizes, and use them as the default values.  If the user wishes to return to the default values that ship with the FROG program, select "Use Default Positions" from the Window menu.  The windows will appear in their default positions, and thereafter the program will use those default positions.  The user can return to specifying custom window positions by selecting "Use Custom Positions" from the Window menu.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Marginals}
+{\up #}{\footnote\pard\plain{\up #} Marginals}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} File Format;File Format,marginal input files;Frequency Marginal;Marginals}
+\fs36\cf1 Marginals\plain\fs24 
+\par \pard \fs20 
+\par The marginals of the FROG trace provide a powerful way to check the consistency of experimental data.  A marginal of a FROG trace is calculated by summing the FROG trace along one of its axes.  For example, summing the FROG trace over tau for all frequencies leads to a one-dimensional function of frequency called the frequency marginal.  The frequency marginal proves to be the most useful of the two marginals.
+\par 
+\par For a given optical nonlinearity, the frequency marginal obeys a certain mathematical relationship to the pulse's spectrum, autocorrelation, and/or second-harmonic spectrum.  By measuring these quantities independently, computing the expected frequency marginal, and then comparing to the marginal of the actual FROG trace, systematic errors in the experimental apparatus can be easily discovered.  If the two marginals do not match to a reasonable degree, a systematic error is indicated in either the FROG apparatus or the equipment (spectrometer, autocorrelator, etc) used to measure the independent quantities.
+\par \pard 
+\par This ability to compare the marginals is very important and unique to FROG.  For example, with only a spectrometer, there is no independent measurement to be made to verify the that the measured spectra are correct.  The same can be said for autocorrelators (indeed, we know firsthand of experimentalists who worked for months with an incorrectly calibrated autocorrelator - all along insisting that it was correct).
+\par 
+\par The exact mathematical form of the marginals is discussed in K. W. DeLong, Rick Trebino, and Daniel J. Kane, "Comparison of ultrashort-pulse Frequency-Resolved Optical Gating traces for three common beam geometries," \i Journ. Opt. Soc. Am. B\plain\fs20 , vol. \b 11\plain\fs20 , 1595-1608 (1994).
+\par \pard \fs24 
+\par \fs20 The Marginals tab specifies the files that have the independently measured data needed to calculate the expected frequency marginal.
+\par 
+\par \{bmc bm27.BMP\}
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Spectrum\plain\fs20 : the usual spectrum of the laser pulse.
+\par 
+\par \b Autocorrelation\plain\fs20 : the standard second-order intensity autocorrelation of the laser pulse.
+\par 
+\par \b SHG Spectrum\plain\fs20 : the spectrum of the laser pulse after being doubled by a frequency-doubling crystal.  This is \i not\plain\fs20  the same as fundamental spectrum with the wavelengths divided by two!\fs24 
+\par \pard \fs20 
+\par Not all of the files are needed for each \uldb nonlinearity\plain\fs20 {\v Optical_Nonlinearity}.  The necessary files are:\fs24 
+\par \pard\li715\fi-355 \b\fs20 PG\plain\fs20 : spectrum, autocorrelation
+\par \b SD and THG\plain\fs20 : SHG spectrum, autocorrelation
+\par \b SHG\plain\fs20 : spectrum.\fs24 
+\par \pard \fs20 
+\par If the necessary files are not specified, the marginal calculation will not occur.  If they are specified, it will occur automatically.
+\par \fs24 
+\par \pard\sb115 \b\fs20 File Formats\plain\fs24 
+\par \pard\tx355 \fs20 
+\par Each file should consist of ordered pairs separated by whitespace.  For example, the spectrum should be pairs of (wavelength, intensity), like
+\par 750\tab  0.01
+\par 751.3\tab 0.03
+\par 752.6\tab 0.11
+\par . . .
+\par The central wavelength and wavelength spacing will be derived from the wavelength numbers.
+\par 
+\par Similarly, the autocorrelation has the time delay in the first column, and autocorrelation intensity in the second.  The SHG spectrum format is identical to the spectrum.
+\par \fs24 
+\par \pard\tx355 \b\fs28 Comparing the Marginals\plain\fs24 
+\par \pard\tx355 \fs20 
+\par \pard\tx355 The marginal comparison graph will appear after the \uldb raw data\plain\fs20 {\v Raw_Data_Window} has been gridded.  The calculated marginal will be saved in the ExpMarg \uldb output file\plain\fs20 {\v Output_Files}.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Maximum Time Bandwidth Products}
+{\up #}{\footnote\pard\plain{\up #} Maximum_Time_Bandwidth_Products}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Maximum Time Bandwidth Products;Time-bandwidth Products}
+\fs36\cf1 Maximum Time Bandwidth Products\plain\fs24 
+\par \pard \fs20 
+\par The larger the \uldb Grid Size\plain\fs20 {\v Grid_Size} of a FROG trace, the more complex pulses it can contain.  A 16 X 16 FROG trace can contain a Gaussian, transform-limited pulse (try it - use a temporal pulse width of 2.66 in SHG FROG or 3.2 in PG FROG).  Pulses with more interesting structures must use a FROG trace with a larger \uldb Grid Size\plain\fs20 {\v Grid_Size}.
+\par 
+\par The maximum time-bandwidth products that a FROG trace of a given size can handle was explored in DeLong et al., IEEE JQE \b 32\plain\fs20 , 1253 (1996).  Here we reproduce the results from that paper (time-bandwidth products are rms, pulse shape is Gaussian):
+\par \pard 
+\par \fs24 
+\par \trowd\trgaph105\trleft-116 \cellx2175\cellx4575\cellx6975\cellx9375\cellx11775\pard\intbl\qc\box\brdrs \fs20 Pulse type\cell\pard \pard\intbl\qc\box\brdrs PG\cell\pard \pard\intbl\qc\box\brdrs SD\cell\pard \pard\intbl\qc\box\brdrs THG\cell\pard \pard\intbl\qc\box\brdrs SHG\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2175\cellx4575\cellx6975\cellx9375\cellx11775\pard\intbl\qc\box\brdrs \fs20 Linear Chirp\cell\pard \pard\intbl\qc\box\brdrs 8.8\cell\pard \pard\intbl\qc\box\brdrs 4.9\cell\pard \pard\intbl\qc\box\brdrs 4.8\cell\pard \pard\intbl\qc\box\brdrs 5.1\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2175\cellx4575\cellx6975\cellx9375\cellx11775\pard\intbl\qc\box\brdrs \fs20 SPM\cell\pard \pard\intbl\qc\box\brdrs 20\cell\pard \pard\intbl\qc\box\brdrs 7.5\cell\pard \pard\intbl\qc\box\brdrs 6.6\cell\pard \pard\intbl\qc\box\brdrs 8.8\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2175\cellx4575\cellx6975\cellx9375\cellx11775\pard\intbl\qc\box\brdrs \fs20 SCP\cell\pard \pard\intbl\qc\box\brdrs 3.4\cell\pard \pard\intbl\qc\box\brdrs 3.0\cell\pard \pard\intbl\qc\box\brdrs 2.6\cell\pard \pard\intbl\qc\box\brdrs 3.3\fs24 \cell\intbl\row
+\pard 
+\par \fs20 
+\par One special note for experimentally generated data - if the experimental trace is too long in the time (horizontal) direction, it may be appropriate to \uldb resample the time delay\plain\fs20 {\v 1.H.WLI} rather than simply use a larger number of points.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Optical Nonlinearity}
+{\up #}{\footnote\pard\plain{\up #} Optical_Nonlinearity}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Frog Trace;Frog Trace,mathematical defn.;Optical Nonlinearity;PG;SD;SHG;THG}
+\fs36\cf1 Optical Nonlinearity\plain\fs24 
+\par \pard \fs20 
+\par A FROG trace is created by interacting a laser pulse with itself in an nonlinear optical medium.  This interaction produces a "signal field," the nature of which depends on the details of the nonlinear optical interaction.  This signal field is then frequency-resolved in a spectrometer, and its intensity is recorded.
+\par 
+\par The FROG algorithm needs to know what type of optical nonlinearity was used to generate the FROG trace, as the same laser pulse electric field will in general produce quite different FROG traces.  The mathematics used by the algorithm to retrieve the pulse with vary with the type of optical nonlinearity.  \fs24 
+\par \pard 
+\par \b\fs28 Nonlinear Optical Interactions\plain\fs24 
+\par \fs20 
+\par There are four possible types of nonlinear interactions, three third order and one second order. \fs24 
+\par \pard\sb115 \b\fs20 Third order interactions\plain\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \ul\fs20 PG\plain\fs20  (Polarization Gate) - commonly generated by Kerr-effect-induced polarization rotation in an isotropic medium.  Can also be generated by so-called "transient-gate" FROG (using a BOXCARS-type phase-matching geometry) or by a cascaded second-order interaction.
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm28.WMF\}\f2\fs24 
+\par \pard\li715\fi-355 \fs20 
+\par \ul SD\plain\fs20  (Self-Diffraction) - generated by a three-wave mixing geometry (two input beams write a grating in the material, and one of the beams scatters off this grating to produce the [third] output beam).  Can also be generated in a transient-grating geometry or cascaded second-order interactions.
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm29.WMF\}\f2\fs24 
+\par \pard\li715\fi-355 \fs20 
+\par \ul THG\plain\fs20  (Third-Harmonic Generation) - uses a two-input-beam geometry where the signal beam is the third harmonic of the input beam.  Can also be generated by cascaded second-order interactions.\fs24 
+\par \pard 
+\par \pard\qc \f4\fs20 \{bmc bm30.WMF\}\f2\fs24 
+\par \pard 
+\par \pard\sb115 \b\fs20 Second order interactions\plain\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \ul\fs20 SHG\plain\fs20  (Second-Harmonic Generation) - uses a standard autocorrelation geometry in a frequency-doubling crystal.\fs24 
+\par \pard 
+\par \pard\qc \f4\fs20 \{bmc bm31.WMF\}\f2\fs24 
+\par \pard 
+\par \b\fs28 Generating the FROG trace\plain\fs24 
+\par \fs20 
+\par The FROG trace itself is then generated by Fourier transforming the signal field and taking its intensity:
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm32.WMF\}.\f2\fs24 
+\par \pard \fs20 
+\par This mathematically represents the frequency-resolution performed by the spectrometer, and the recording of the resulting intensity (by a detector).
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Output Files}
+{\up #}{\footnote\pard\plain{\up #} Output_Files}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} FFT;File Format;File Format,output files;Fourier transform;Frog Trace;Frog Trace,output file format;Marginals;Output Files;Spectrometer;Spectrum;Spectrum scaling}
+\fs36\cf1 Output Files\plain\fs24 
+\par \pard \fs20 
+\par When the algorithm has finished (the user has clicked "Stop" on the \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} window ), several output files are written to disk.
+\par \fs24 
+\par \b\fs28 FROG Traces: a.dat, arecon.dat\plain\fs24 
+\par \fs20 
+\par The FROG traces are output to disk as a.dat (the target trace) and arecon.dat (the reconstructed or retrieved trace).  The format used is the ASCII Special format for Fortner Transform (http://www.fortner.com), an excellent program for displaying images.
+\par 
+\par Number of wavelengths    Number of delays
+\par Minimum value        Maximum value
+\par \pard wavelengths. . .
+\par delays. . .
+\par data. . .
+\par 
+\par The number of wavelengths and number of delays are always equal, and are the same as the number of points selected on the \uldb Initialize FROG\plain\fs20 {\v Grid_Size} screen.
+\par 
+\par The minimum and maximum values refer to the pixel values, and are used by Transform for scaling purposes.
+\par 
+\par The wavelength coordinates of the trace are arranged from shortest to longest, and are immediately followed by the time coordinates.
+\par 
+\par The data then follows with the shortest wavelength (top row of the trace) output first, followed by the next wavelength, etc.
+\par \pard 
+\par Here is a sample output file:\fs24 
+\par \f3\fs20 128 128       // Number of points
+\par 0 302.157     // Min and Max
+\par 569.25        // Wavelengths - there are 128 of these
+\par 570.943
+\par 572.646\f2\fs24 
+\par \f3\fs20 etc.\f2\fs24 
+\par \f3\fs20 -320          // The delay values - there are 128 of these
+\par -315
+\par -310
+\par -305
+\par etc.
+\par 1.17044e-13   // The data - there are 128X128 of these!!
+\par 1.1383e-13
+\par 1.08493e-13\f2\fs24 
+\par \f3\fs20 
+\par \f2\fs24 
+\par {\up #}{\footnote\pard\plain{\up #} 5YAK3U}
+\b\fs28 Electric Field Files\plain\fs24 
+\par \fs20 
+\par Several fields are output from the program.  These files are:
+\par \fs24 
+\par \pard\li715\fi-355 \fs20 e.dat - the original field in the time domain (assuming one is available)
+\par ek.dat - the retrieved field (in the time domain) with the lowest FROG error
+\par spec.dat - the original field in the frequency domain
+\par speck.dat - the frequency domain representation of the retrieved field with the lowest FROG error.
+\par \fs24 
+\par \pard \fs20 The format for all these files is a 5-column format, with the following values:
+\par Time (or wavelength)   Intensity   Phase (in radians)    Real Part of Field    Imaginary Part of Field
+\par \fs24 
+\par \pard\li715\fi-355 \fs20 auto.dat, autok.dat - the second-order intensity autocorrelation of the original and retrieved fields\fs24 
+\par \pard \fs20 
+\par The autocorrelation file has a simple two-column format : time and intensity.
+\par 
+\par \fs24 
+\par \b\fs28 Spectrum Scaling\plain\fs24 
+\par \fs20 
+\par The FROG program uses FFT's to generate the spectrum of the pulse.  FFT's produce a spectrum that is scaled to constant frequency units (the spectral energy is binned in bins of constant frequency width, if you like).  However, laboratory instruments such as a grating spectrometer produce spectra that are binned on a constant wavelength interval.  The FROG program takes this into account, and reads in data assuming a constant wavelength spacing, converts it to constant frequency spacing for internal use, and then reconverts it back to constant wavelength spacing for output as spec.dat and speck.dat.  Therefore the user can transparently use ordinary laboratory units and allow the FROG program to automatically take care of the conversion.
+\par \pard 
+\par \fs24 
+\par {\up #}{\footnote\pard\plain{\up #} _6YR3W}
+\b\fs28 The Frog.dat file\plain\fs24 
+\par \fs20 
+\par A file called frog.dat is written for each retrieval.  This file contains a log of all the activity of the program.  It contains a record of all the input parameters that the user entered, as well as a list of the FROG error for each iteration, the algorithmic strategy being used, and finally the \uldb Results\plain\fs20 {\v Results_Window} of the retrieval - pulse widths, time-bandwidth products, etc.
+\par 
+\par \fs24 
+\par \b\fs28 The Marginals - marg.dat\plain\fs24 
+\par \fs20 
+\par A file called marg.dat is also written.  This contains the delay and frequency marginals for the target and retrieved FROG traces.  The six-column format is 
+\par \pard 
+\par time      original delay marginal     retrieved delay marginal     original frequency marginal    retrieved frequency marginal     wavelength
+\par 
+\par The frequency marginals are also corrected to represent constant wavelength bins (as mentioned above), as well.
+\par 
+\par If the \uldb Data Source\plain\fs20 {\v Data_Source} is an experimental FROG trace, and the frequency \uldb marginal\plain\fs20 {\v Marginals} was calculated, the calculated marginal will be saved in a file called ExpMarg.dat.  This file has two columns - the wavelength and the value of the calculated marginal.
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Outputs Tab}
+{\up #}{\footnote\pard\plain{\up #} Outputs_Tab}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Output Directory;Outputs Tab;Phase Blanking}
+\fs36\cf1 Outputs Tab\plain\fs24 
+\par \pard \fs20 
+\par The Outputs tab controls the location and style of the \uldb output files\plain\fs20 {\v Output_Files}.
+\par 
+\par \{bmc bm33.BMP\}
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Output Directory for Files:\plain\fs20  selects the directory where the \uldb output files\plain\fs20 {\v Output_Files} will be saved.
+\par 
+\par \b Output Format:\plain\fs20  When set to Classic, this will output the standard files documented \uldb here\plain\fs20 {\v Output_Files}..If you choose Femtosoft Compatible, the files will be written in the same format as the \uldb expected input format\plain\fs20 {\v HEADER}, including headers.  This way, you can read in the data from previous runs and use that as input to the FROG algorithm.  Remember, the FROG output format is in constant frequency, so that on the \uldb experimental data tab\plain\fs20 {\v Experimental_Data_Tab} you'll need to select Order:Delay and Read In As: Constant Frequency (the opposite of most experimental setups).  The output format selection that you make here is persisted, so that you won't need to set it every time you run the program.
+\par \pard\li715\fi-355 \fs24 
+\par \b\fs20 Phase Blanking Level:\plain\fs20  this unit sets the level at which the phase is set to zero. in the electric fields and spectra \uldb output files\plain\fs20 {\v Output_Files}.  Especially for experimental data, the wings of the retrieved pulse are just noise.  Because the real and imaginary parts of the field are varying independently, the phase in the wings of the field fluctuates wildly.  This can be extremely distracting when plotting the pulse.  If phase blanking is set at 0.0001, for example, then the phase is set to zero for all points where the intensity is less than 0.0001 of the peak intensity.  This affects only the phase in the \uldb output file\plain\fs20 {\v Output_Files}; the real and imaginary components are still output unchanged.
+\par \pard\li715\fi-355 
+\par \b Display Graphics:\plain\fs20  when this box is check the FROG algorithm will update the \uldb FROG trace\plain\fs20 {\v FROG_Trace_Windows} and \uldb Electric Field and Spectrum windows\plain\fs20 {\v Electric_Field_and_Spectrum_Windows} as the algorithm runs.  Updating the graphics slows the algorithm down significantly, so uncheck this box for faster pulse retrieval.  Unexpectedly, the speedup gained becomes smaller as the \uldb grid size\plain\fs20 {\v Grid_Size} becomes larger.  This is because for larger grids, a larger portion of each iteration of the algorithm is spent on the actual numerics of the pulse retrieval, rather than on the display update.
+\par \pard\li715\fi-355 
+\par \b Always Overwrite Results:\plain\fs20  When this is checked, FROG will write its results into the selected directory, and silently overwrite any previous runs' files there.  This is useful if you are running a lot of theoretical traces that you are not going to save.  When this item is unchecked, if there are previous data files in the directory a dialog box will appear to warn you.  At this point you can elect to overwrite, cancel the save, or save to a different directory.  With important experimental data files, the recommended usage is to put each data file in its own directory, along with the FROG output files.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Publications}
+{\up #}{\footnote\pard\plain{\up #} Publications}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Publications}
+\fs36\cf1 Publications\plain\fs24 
+\par \pard \fs20 This help file is not meant to be a complete tutorial on using FROG.  Please consult the literature if you are not familiar with the technique.  \fs24 
+\par 
+\par \pard\sb115 \b\fs20 FROG Publications\plain\fs24 
+\par \pard \fs20 
+\par Kenneth W. DeLong and Rick Trebino, "Improved ultrashort pulse-retrieval algorithm for Frequency-Resolved Optical Gating," \i Journ. Optical Society of America A\plain\fs20 , vol. \b 11\plain\fs20 , 2429-2437 (1994).
+\par 
+\par Kenneth W. DeLong, David N. Fittinghoff, Rick Trebino, Bern Kohler, and Kent Wilson, "Pulse retrieval in Frequency-Resolved Optical Gating based on the method of generalized projections," \i Opt. Lett\plain\fs20 ., vol. \b 19\plain\fs20 , 2152-2154 (1994).
+\par 
+\par K. W. DeLong, Rick Trebino, and Daniel J. Kane, "Comparison of ultrashort-pulse Frequency-Resolved Optical Gating traces for three common beam geometries," \i Journ. Opt. Soc. Am. B\plain\fs20 , vol. \b 11\plain\fs20 , 1595-1608 (1994).
+\par \pard 
+\par K. W. DeLong, Rick Trebino, J. Hunter, and W. E. White, "Frequency-resolved optical gating with the use of second-harmonic generation," \i Journ. Opt. Soc. Am. B\plain\fs20 , vol.\b  11\plain\fs20 , 2207-2215 (1994).\fs24 
+\par \fs20 
+\par Kenneth W. DeLong, David N. Fittinghoff, and Rick Trebino, "Practical Issues in Ultrashort-Laser-Pulse Measurement Using Frequency-Resolved Optical Gating," \i IEEE Journ. Quant. Electr\plain\fs20 ., vol. \b 32\plain\fs20 , 1253-1264 (1996).
+\par \fs24 
+\par \pard\sb115 \b\fs20 TADPOLE Paper\plain\fs24 
+\par \pard \fs20 
+\par David N. Fittinghoff, Jason L. Bowie, John N. Sweetser, Richard T. Jennings, Marco A. Krumbugel, Kenneth W. DeLong, Rick Trebino, and Ian Walmsley, "Measurement of the intensity and phase of ultraweak, ultrashort laser pulses," \i Opt. Lett.\plain\fs20 , vol. \b 21\plain\fs20 , 884-886 (1996).
+\par \fs24 
+\par \pard\sb115 \b\fs20 Review Paper\plain\fs24 
+\par \pard \fs20 
+\par Rick Trebino, Kenneth W. DeLong, David N. Fittinghoff, John N. Sweetser, Marco A. Krumbugel, Bruce A. Richman, and Daniel J. Kane, "Measuring ultrashort laser pulse in the time-frequency domain using frequency-resolved optical gating," \i Rev. Sci. Instrum\plain\fs20 ., vol. \b 68\plain\fs20 , 3277-3295 (1997).
+\par \fs24 
+\par \pard\sb115 \b\fs20 XFROG\plain\fs24 
+\par \pard \fs20 
+\par S. Linden, H. Geissen, and J. Kuhl, "XFROG - A New Method for Amplitude and Phase Characterization of Weak Ultrashort Pulses," \i Phys. Stat. Sol. (b)\plain\fs20 , \b 206\plain\fs20 , 119-124 (1998).
+\par \fs24 
+\par \pard\sb115 \b\fs20 Web Site\plain\fs24 
+\par \pard \fs20 
+\par http://www.ca.sandia.gov/~ultrafrog
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Raw Data Window}
+{\up #}{\footnote\pard\plain{\up #} Raw_Data_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Data extract;Extract;FFT;Fourier transform;Grid data;Noise subtraction;Raw Data;Resample Delay Axis;Sampling rate;Spectrometer}
+\fs36\cf1 Raw Data Window\plain\fs24 
+\par \pard 
+\par \fs20 The \b Raw Data\plain\fs20  screen appears when the user elects to use experimental data as an input.  With this screen, the user can change the experimental data through various noise subtractions and other data manipulations.
+\par 
+\par \{bmc bm34.BMP\}
+\par 
+\par The \b Raw Data\plain\fs20  screen contains a menu bar, which controls the data manipulations.  At the bottom of the screen it lists the magnification factors that were applied to the raw data set in order to display it.  In other words, if a 100 X 100 pixel experimental data set were being displayed on a 100 X 300 pixel window, the magnification factors would be 1 and 3.
+\par \pard 
+\par \fs24 
+\par \b\fs28 Noise Subtraction\plain\fs24 
+\par \fs20 
+\par There are several types of noise reduction routines built into the FROG program.  Large scale, low level noise will result in noisy wings in the retrieved pulse, so it is important to reduce noise as much as possible.  Of course, it is always better to reduce the noise in the experimental apparatus, rather than try to subtract it after the fact.
+\par 
+\par The noise subtraction routines can be applied as many times as you like.  The results will be displayed on the screen.  However, there is no way to undo a noise subtraction except by canceling and reading in the data from disk again.
+\par \pard \fs24 
+\par \pard\li715\fi-355 \b\fs20 Full Spectrum\plain\fs20  - this method takes the average of the spectra at the two smallest and two largest delays, and uses this average spectrum to subtract from the data at every time delay.  The rationale behind this is that when stray light is entering the spectrometer used to make the FROG measurement, its spectrum will be dispersed across the detector independent of time delay.  The smallest and largest time delays should not have any legitimate FROG data, so that the only signal present there is the stray light.  Subtracting this spectrum from all delay values should increase the accuracy of the data.
+\par \pard\li715\fi-355 
+\par \b Lowest Pixel\plain\fs20  - in those cases where the FROG data is nearly truncated, a Full Spectrum subtraction may yield anomalous results.  In these cases, the Lowest Pixel subtraction will look for the pixel with the lowest value (least amount of signal) and subtract that value from every pixel.  This may be useful for removing dark current counts, for example.
+\par 
+\par \b Edge\plain\fs20  - this mode takes an average value of every data value within two pixels of the edge of the data set on all four sides.  Again, the real FROG signal should be zero here, so that only noise contributes to the average.  This average value is then subtracted from every pixel in the data set.
+\par \pard\li715\fi-355 
+\par \b Fourier Low Pass\plain\fs20  - in this case a low-pass Fourier filter is used.  First, the data are put onto a square M X M grid with a number of elements M that is a power of two (the smallest value of M that will hold all the data is used).  The data are then Fourier transformed, and are multiplied by a circular Gaussian filter.  The half width at half maximum (HWHM) of the filter is input by the user; a value of 1.0 means a HWHM of M/2.
+\par 
+\par \b Cleanup Pixels\plain\fs20  - this remarkable filter will hunt down and remove stray pixels.  This will help remove noise in places that are hard to process with the other filters.
+\par \pard\li715\fi-355 
+\par RECOMMENDATION - probably the best default filtering path is one or two \b Full Spectrum\plain\fs20  subtractions, followed by a \b Cleanup Pixels\plain\fs20 .\fs24 
+\par \pard \fs20 
+\par \fs24 
+\par \b\fs28 Data 
+\par \plain\fs24 
+\par \pard\li715\fi-355 \b\fs20 Extract Data\plain\fs20  - Sometimes only a certain section of the experimental data should be used, due to excessive noise in other regions of the data.  Using the Data Extract feature, the user can select which section of the data for the FROG program to use.
+\par 
+\par Using the mouse, draw a rectangle around the area of data that you would like to use.  Then, click on the Data menu, and select Extract.  The data that was outside the rectangle will be discarded and the new data set will be displayed.
+\par \pard\li715\fi-355 
+\par There is no way to undo an Extraction.
+\par 
+\par 
+\par {\up #}{\footnote\pard\plain{\up #} 1.H.WLI}
+\b Resample Delay Axis - \plain\fs20 At times it is advantageous to resample the delay axis.  Suppose, for example, an overzealous grad student made a FROG trace of a 100 fs FWHM pulse using a 0.5 fs delay step size.  In order to capture all the data, over 400 delay steps would be necessary.  That means that the smallest grid size that could be used in the FROG program is 512 X 512.  At this size, the FROG algorithm would be extremely slow and require excessive amounts of memory.  This large of a grid size is almost never needed, unless the pulse is extremely complicated.  Remember, a transform-limited Gaussian pulse can be fully captured by a 16 X 16 pixel FROG trace!  (Try it - use a temporal pulse width of 2.66 in SHG FROG or 3.2 in PG FROG).
+\par \pard\li715\fi-355 
+\par The answer here is to resample the delay axis.  The optimal \uldb FROG sampling rate\plain\fs20 {\v FROG_Sampling_Rate} for sampling a 100 fs pulse on a 64 X 64 grid is about 15 to 20 fs.  Thus the sampling rate could be reduced to every 15 fs.  \fs24 
+\par \fs20 
+\par To resample the delay axis, select Data, then Resample Delay Axis.  Enter the new sampling rate (this must be larger than the current rate - even the FROG algorithm can't create data that isn't there).  The FROG program will display the new data set.
+\par \fs24 
+\par \pard 
+\par \b\fs28 Grid Data\plain\fs24 
+\par \fs20 
+\par The delay and frequency axes in the FROG program are related though a Fourier transform relationship.  However, experimental data from the laboratory has no such relationship in general, and thus will not satisfy the necessary constraints.  The FROG program must thus "grid" the data; that is, put it on a data grid that is compatible with the Fourier transform relationship.
+\par 
+\par In general, it is easier to oversample the data in the spectral domain than in the time domain, because a spectrometer usually has much more resolution than the FROG program requires.  For example, on a 64 X 64 pixel grid, a 100 fs pulse is adequately sampled with 15 fs steps.  At 800 nm, this means a wavelength step of 2.2 nm is required.  Practically all spectrometers provide much more resolution than this.  Therefore, the FROG program averages over the wavelength data, putting it on a coarser scale in order to satisfy the Fourier transform relationship.  If the wavelength spacing is already too coarse, then a warning message appears.  In this case, the total delay range must be reduced (fewer points and/or smaller time step) in order to reduce the needed spectral resolution.  If this is impossible (eg, resampling the delay axis causes the FROG trace to be truncated) then a spectrometer with finer resolution is needed..
+\par \pard 
+\par Grid the data by selecting "Grid Data."  The FROG program automatically puts the data on a proper grid and displays the \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} screen.  The algorithm is now ready to run.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Read In Field}
+{\up #}{\footnote\pard\plain{\up #} Read_In_Field}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Data source;Data source,read-in field;Read In Field}
+\fs36\cf1 Read-In Field\plain\fs24 
+\par \pard \fs20 
+\par This Data Source option uses an electric field stored on disk to be used as the initial field in the FROG program.  The FROG trace generated by this field serves as the target FROG trace.
+\par 
+\par \{bmc bm35.SHG\}
+\par 
+\par Selecting Read-in E field from File presents the user with four tabs to control the execution of the FROG algorithm.
+\par \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 Input Data\plain\fs20 {\v Input_Data_for_Read_In_Field} - selects the input file that holds the electric field, and its calibrations.
+\par 
+\par \uldb Outputs\plain\fs20 {\v Outputs_Tab} - selects the directory for the output files of the program.
+\par 
+\par \uldb First Guess\plain\fs20 {\v First_Guess_Field} - selects the field to be used as the starting field for the retrieval.
+\par 
+\par \uldb Strategies\plain\fs20 {\v Strategies_Tab} - controls the strategies used by the FROG retrieval algorithm.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Reference Field Calibrations}
+{\up #}{\footnote\pard\plain{\up #} Reference_Field_Calibrations}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Reference Field Calibrations;XFROG Reference Field;XFROG Units}
+\fs36\cf1 Reference Field Calibrations\plain\fs24 
+\par \pard \fs20 
+\par This window is used in \uldb XFROG\plain\fs20 {\v XFROG_Overview} to select the source of reference field.  This window appears after the \uldb test field calibrations\plain\fs20 {\v Test_Calibration_Window} are entered.
+\par 
+\par \{bmc bm36.BMP\}
+\par 
+\par There are three sources for the reference field.  It could be generated from theory, it could be the pulse retrieved from the previous FROG retrieval (assuming one exists), or it could be read in from a file on disk.
+\par 
+\par Be sure to use the same units, Pixel or Real, for the test and reference pulse.  That is, if the test pulse is specified in real units of fs and nm, be sure to specify the reference field in the same units, not in normalized pixel units.  This would produce incorrect results for the output time and frequency calibrations.
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Results Window}
+{\up #}{\footnote\pard\plain{\up #} Results_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Laplacian Time-Bandwidth Product;Minimum Time-Bandwidth Products;Results Window;Time-bandwidth Products;Width}
+\fs36\cf1 Results Window\plain\fs24 
+\par \pard 
+\par \fs20 While the algorithm is retrieving a pulse, the Results window appears.  This window displays the various widths and time-bandwidth products of the pulses.  For retrievals with an original electric field that is known (Theoretical or Read-in \uldb Data Sources\plain\fs20 {\v Data_Source}), the results for the original field are shown as soon as the field is specified.  The parameters of the retrieved field are calculated after the Stop button in \uldb Algorithm Control\plain\fs20 {\v Algorithm_Control} is pressed.
+\par 
+\par \{bmc bm37.BMP\}
+\par \fs24 
+\par \b\fs28 Temporal and Spectral Widths\plain\fs24 
+\par \pard \fs20 
+\par The various widths of the field are calculated using the full width at half-maximum (FWHM).  Be aware that for pulses with complex shapes, this number may be close to meaningless.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Temporal FWHM\plain\fs20  - displays the FWHM of the intensity of the field in the time domain.
+\par 
+\par \b Spectral FWHM\plain\fs20  - displays the FWHM of the spectral intensity.  (This is now calculated exactly - no first order approximation in converting from width in frequency to width in wavelength).
+\par 
+\par \b Autocorrelation FWHM\plain\fs20  - the program calculates the autocorrelation and its FWHM for comparison to standard autocorrelation measurements.\fs24 
+\par \pard \fs20 
+\par \fs24 
+\par \b\fs28 Time-Bandwidth Products\plain\fs24 
+\par \fs20 
+\par Time-bandwidth products (TBP) are a convenient way of measuring the complexity and amount of phase distortion on a pulse.  The FROG program provides several types of time-bandwidth measures.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 FWHM\plain\fs20  - this is the classic way to measure time-bandwidth.  For pulses with smooth, Gaussian-like intensity profiles, this measure is fairly significant.  However, for more complicated pulses, it quickly loses its relevance.
+\par 
+\par \b RMS\plain\fs20  - The rms time-bandwidth product provides a better measure of pulse complexity than the FWHM.  Whereas the FWHM TBP can take on almost any value, the rms TBP has an absolute minimum of 0.5 for transform-limited Gaussian pulses.\fs24 
+\par \pard 
+\par \b\fs28 Laplacian Time-Bandwidth Products\plain\fs24 
+\par \fs20 
+\par One of the questions often asked about a femtosecond laser pulse is "how far is it from the transform limit?"  For a Gaussian pulse with linear chirp this question can be answered definitively and quantitatively, and the answer provides nearly all that we need to know about the pulse.  However, for a more complex pulse, the question cannot be answered so easily.  The reason is that for a pulse with a complicated intensity profile, there may still be significant spectral phase modulation even when the temporal phase is flat, and vice versa.  In this case, how do we define the transform limit?
+\par \pard 
+\par One way is to ask how much the temporal phase variations have broadened the spectrum.  In other words, if we took the same temporal intensity profile, and set the phase equal to zero for all times, how much would the width of the spectrum change?  This gives us some idea of how significant the amount of temporal phase is.  The same arguments apply for the spectral phase and temporal width, of course.  The Laplacian TBPs, a set of lesser known TBPs, provide a quantitative measure of these effects.  The Laplacian TBPs measure the broadening of the rms width of the spectral (temporal) intensity due to the non-zero temporal (spectral) phase.
+\par \pard \fs24 
+\par \pard\li715\fi-355 \b\fs20 Temporal Laplacian\plain\fs20  - measures the broadening of the spectral width due to the temporal phase fluctuations.  For a flat temporal phase, the temporal Laplacian TBP is always 0.5 for all pulse shapes.  A temporal Laplacian of 1.0 thus means that the rms spectral width of the pulse is broadened by a factor of two by the presence of the non-zero temporal phase fluctuations.  Viewed another way, the rms spectral width could be reduced by a factor of 2 if the temporal phase variations could be eliminated.
+\par \pard\li715\fi-355 
+\par \b Spectral Laplacian\plain\fs20  - measures the broadening of the temporal width due to the spectral phase fluctuations.  For a flat spectral phase, the spectral Laplacian TBP is always 0.5 for all spectral intensity shapes.  A spectral Laplacian of 1.0 means that the rms temporal intensity width is broadened by a factor of 2 due to the non-zero spectral phase.  In other words, the rms temporal intensity width could be reduced by a factor of 2 by eliminating the spectral phase variations.\fs24 
+\par \pard \fs20 
+\par \fs24 
+\par \b\fs28 Minimum Time-Bandwidth Products for various pulse shapes\plain\fs24 
+\par \fs20 
+\par \fs24 
+\par \trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrth \fs20 Pulse Shape\cell\pard \pard\intbl\qc\box\brdrth FWHM TBP\cell\pard \pard\intbl\qc\box\brdrth RMS TBP\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrth \pard\intbl\qc\box\brdrs \fs20 Gaussian\cell\pard \pard\intbl\qc\box\brdrs 0.4413\cell\pard \pard\intbl\qc\box\brdrs 0.5\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 Sech^2\cell\pard \pard\intbl\qc\box\brdrs 0.3148\cell\pard \pard\intbl\qc\box\brdrs 0.524\fs24 \cell\intbl\row
+\trowd\trgaph105\trleft-116 \cellx2655\cellx5535\cellx8415\pard\intbl\qc\box\brdrs \fs20 Lorentzian\cell\pard \pard\intbl\qc\box\brdrs 0.2206\cell\pard \pard\intbl\qc\box\brdrs 2.465\fs24 \cell\intbl\row
+\pard \fs20 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Strategies Tab}
+{\up #}{\footnote\pard\plain{\up #} Strategies_Tab}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Basic FROG Algorithm;Projections;Shortcuts;Strategies;Strategies Tab}
+\fs36\cf1 Strategies Tab\plain\fs24 
+\par \pard \fs20 
+\par Strategies refers to the way the FROG algorithm tries to retrieve the electric field from the FROG trace.  They are named Basic, Projections, etc., and are described in the published literature.  The FROG algorithm is designed to try various strategies in turn, as it is impossible to tell \i a priori\plain\fs20  which strategy will perform best for a given pulse.  Because some strategies work better with certain nonlinearities than others, and because some are faster than others, FROG provides the means to change the order of the strategies.
+\par \pard 
+\par \{bmc bm38.BMP\}
+\par 
+\par There are several parameters that go with each strategy.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Strategy\plain\fs20  - this indicates the name of the strategy (see below).  When clicked on, a drop down list of names to choose from appears.
+\par 
+\par \b Min. Iterations\plain\fs20 : sets the minimum number of iterations that the strategy will run.  After that, the algorithm compares the current FROG error with the error from Min. Iterations before.  If the error has decreased by at least 0.5%, the algorithm continues with the current strategy; otherwise, it proceeds to the next in the list.  When the end of the list is reached, it begins again at the top.
+\par \pard\li715\fi-355 
+\par \b Start Field\plain\fs20 : determines what type of field to begin with when this strategy is first used.  If the number in Start Field is less than 0, the current retrieved field is kept and the algorithm proceeds.  If Start Field is zero, the field with the globally lowest FROG error so far is used.  If Start Field is greater than zero, the best field is perturbed with random noise.  For example, if Start Field is 0.5, the best field is normalized to a peak intensity of unity, then a random intensity and phase field with peak intensity 0.5 is added to it.
+\par \pard\li715\fi-355 
+\par \b Shortcut\plain\fs20 : determines how often the Shortcut method should be used.  Shortcuts are described below.\fs24 
+\par \pard 
+\par \b\fs28 Types of Strategies\plain\fs24 
+\par \fs20 
+\par The strategies are described in detail in the published scientific literature, especially in Kenneth W. DeLong and Rick Trebino, "Improved ultrashort pulse-retrieval algorithm for Frequency-Resolved Optical Gating," \i Journ. Optical Society of America A\plain\fs20 , vol. \b 11\plain\fs20 , 2429-2437 (1994), and in Kenneth W. DeLong, David N. Fittinghoff, Rick Trebino, Bern Kohler, and Kent Wilson, "Pulse retrieval in Frequency-Resolved Optical Gating based on the method of generalized projections," \i Opt. Lett\plain\fs20 ., vol. \b 19\plain\fs20 , 2152-2154 (1994).\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \b\fs20 Basic\plain\fs20 : the basic FROG algorithm described in the references above.  The modified signal field is integrated over tau to get the new electric field.
+\par 
+\par \b Expo\plain\fs20 : when replacing the retrieved pulse's signal-field intensity with the target FROG trace's intensity, the overcorrection scheme described in the JOSA A paper above is applied.
+\par 
+\par \b Inten. Gate\plain\fs20 : the intensity constraint method mentioned in the JOSA A paper is used to generate a new intensity for the retrieved pulse.  Every third iteration is performed with the Basic strategy.
+\par \pard\li715\fi-355 
+\par \b Projections\plain\fs20 : uses the method of Generalized Projections described in the Optics Letter above.
+\par 
+\par \b Proj. - Overstep\plain\fs20 : uses the Projection strategy, then creates a new field by "over-applying" the correction: \{bmc bm39.WMF\}.
+\par 
+\par \b Minimization FR\plain\fs20 : performs a direct minimization of the FROG trace error using the Fletcher-Reeves method as described in the JOSA A paper above.  This minimization is extremely slow for larger FROG grid sizes.
+\par 
+\par \b Minimization PR\plain\fs20 : performs a direct minimization of the FROG trace error using the Polak-Ribiere method as described in the JOSA A paper above.  This minimization is extremely slow for larger FROG grid sizes.
+\par \pard\li715\fi-355 \fs24 
+\par \pard {\up #}{\footnote\pard\plain{\up #} 1752HXP}
+\b\fs28 Shortcuts\plain\fs24 
+\par \fs20 
+\par Shortcuts are a special-purpose technique to speed up initial convergence of the algorithm.  An as-yet unpublished paper by Marco Krumbuegel and Rick Trebino describe the mathematics of this technique.  Shortcuts appear to speed the algorithm by allowing the retrieval to jump out of local minima and approach the global minimum more closely.  At errors of less that 1e-7, however, Shortcuts appear to hinder the convergence, rather than aid it.  This is not usually a concern, since 1) no experimental data has ever come close to this level of convergence, and 2) at such low levels of error, the algorithm is already in the global minimum and normal projections or other algorithms work just as quickly.
+\par \pard 
+\par Here is a graph showing the FROG error versus iteration for a theoretical, transform-limit pulse, using Projections with Shortcuts, and Projections without Shortcuts.  See how the retrieval using Shortcuts initially converges faster, but stalls at about 1e-7.
+\par 
+\par \{bmc bm40.BMP\}\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Algorithm Windows}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Algorithm_Windows}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} TADPOLE Algorithm Windows}
+\fs36\cf1 TADPOLE Algorithm Windows\plain\fs24 
+\par \pard \fs20 
+\par After the "OK" button on the TADPOLE Calibrations window is clicked, the windows controlling the TADPOLE algorithm appear.
+\par 
+\par \{bmc bm41.SHG\}
+\par 
+\par There are several windows open when TADPOLE is active.
+\par \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 TADPOLE Experimental Data\plain\fs20 {\v TADPOLE_Experimental_Data_Window} - shows the input TADPOLE spectrum, and the spectrum of the reference pulse.  \fs24 
+\par \fs20 
+\par \uldb TADPOLE Results\plain\fs20 {\v TADPOLE_Results_Window} - shows the widths etc. of the field calculated with the cutoff selected in the FFT Data window.
+\par 
+\par \uldb FFT Data\plain\fs20 {\v FFT_Data_Window} - controls the TADPOLE algorithm operation.
+\par 
+\par \b Electric Field\plain\fs20  - shows the current TADPOLE calculated field in the time domain.
+\par 
+\par \b Spectrum\plain\fs20  - the frequency domain equivalent of the field in the Electric Field window.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Calibrations}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Calibrations}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} TADPOLE Calibrations}
+\fs36\cf1 TADPOLE Calibrations\plain\fs24 
+\par \pard \fs20 
+\par The TADPOLE algorithm is started by clicking the speed button labeled with at "T" on the FROG main form.  This brings up the TADPOLE Calibrations window.  This window presents three tabs that allow the user to enter the data needed to execute the TADPOLE retrieval.
+\par 
+\par \{bmc bm42.SHG\}
+\par \fs24 
+\par \pard\li715\fi-355 \uldb \fs20 Inputs\plain\fs20 {\v Tadpole_Inputs_Tab} - selects the input TADPOLE data and (optionally) the spectrum of the unknown pulse.
+\par 
+\par \uldb Reference\plain\fs20 {\v TADPOLE_Reference_Tab} - selects the source for the electric field of the reference pulse
+\par 
+\par \uldb Outputs\plain\fs20 {\v TADPOLE_Output_Tab} - selects the directory where the results will be written to.
+\par 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Experimental Data Window}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Experimental_Data_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} TADPOLE Experimental Data Window}
+\fs36\cf1 TADPOLE Experimental Data Window\plain\fs24 
+\par \pard \fs20 
+\par The TADPOLE Experimental Data window shows the TADPOLE spectrum as well as the spectrum of the reference pulse.
+\par 
+\par \{bmc bm43.BMP\}
+\par 
+\par The reference pulse spectrum should always be wider than the TADPOLE spectrum.
+\par 
+\par Clicking the right mouse button allows the user to print this graph.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Inputs Tab}
+{\up #}{\footnote\pard\plain{\up #} Tadpole_Inputs_Tab}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} File Format;File Format,TADPOLE input files;TADPOLE Input Files;TADPOLE Input Tab}
+\fs36\cf1 TADPOLE Inputs Tab\plain\fs24 
+\par \pard \fs20 
+\par The TADPOLE inputs allow the user to select the input data source for the TADPOLE calculation.
+\par 
+\par \{bmc bm44.SHG\}
+\par 
+\par There are two possible file sources to set.
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 TADPOLE Spectrum\plain\fs20  - the spectrum that contains the TADPOLE data.  The expected format is space-delimited pairs of wavelength (in nm) and spectral intensity.
+\par 
+\par \b Test Pulse Spectrum\plain\fs20  - the spectrum of the pulse being measured.  The spectrum of the test pulse (the pulse being measured) can be calculated in the TADPOLE calculation; however, this is often error-prone, as it involves the division of very small numbers - and in the presence of noise this often can give spurious results.  Constraining the result spectrum to be that of the laboratory measured spectrum usually gives better results.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Output Tab}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Output_Tab}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} TADPOLE Output Directory;TADPOLE Output Tab}
+\fs36\cf1 TADPOLE Output Tab\plain\fs24 
+\par \pard \fs20 
+\par This tab allows the user to select the directory where the TADPOLE output files are written.
+\par \fs24 
+\par \fs20 \{bmc bm45.SHG\}
+\par 
+\par When the "Quit" button is clicked in the TADPOLE Results window, the calculated test field is saved to disk in two files: TadE.dat saves the field in the time domain, and TadSpec.dat saves the same field in the frequency domain.  The format is identical to that used to output the \uldb FROG electric fields\plain\fs20 {\v 5YAK3U}.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Overview}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Overview}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} TADPOLE Overview}
+\fs36\cf1 TADPOLE Overview\plain\fs24 
+\par \pard \fs20 
+\par TADPOLE (Temporal Analysis by Dispersed Pairs of Light E-fields) is a linear method for measuring the intensity and phase of a laser pulse.  TADPOLE is based on spectral interferometry, a technique used for several decades.  Like all linear methods for measuring laser pulses, spectral interferometry requires the presence of a well-known reference pulse.  FROG can measure the intensity and phase of a (stronger) reference pulse; this pulse can then be used to measure almost arbitrarily weak laser pulses.  See the \uldb Publications\plain\fs20 {\v Publications} for published literature.
+\par \pard 
+\par TADPOLE begins by interfering an unknown (test) pulse and a known (ref) pulse.  The pulses are separated by a time delay.  The spectrum exhibits fringes, the phase of which reflect the phase difference between the test and ref pulses:
+\par \fs24 
+\par \f4\fs20 \{bmc bm46.WMF\}
+\par 
+\par \{bmc bm47.WMF\}.\f2\fs24 
+\par 
+\par \f4\fs20 The TADPOLE spectral intensity develops well-defined fringes, due to the term in the exponential.  The equation for the TADPOLE spectral intensity above can be Fourier transformed.  The transformed function exhibits three peaks: one at DC for first two terms, and two peaks at plus and minus tau from the third and forth terms.  For large enough values of tau, the three peaks are well separated, and one peak can be selected while the other two are filtered out.  This leaves a term like
+\par \pard 
+\par \{bmc bm48.WMF\}
+\par which, when divided by the complex reference field, yields the conjugate of the test pulse!
+\par 
+\par In practice, division of the fields in this manner often yields spurious results, especially in the wings of the pulse.  However, if the test pulse is strong enough to measure a TADPOLE spectrum, one can usually also measure the spectrum of the pulse.  The TADPOLE algorithm can be configured to use the experimentally measured spectral intensity, rather than the one calculated from the TADPOLE data.  In this case, only the spectral phase is calculated from the TADPOLE data.\f2\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Reference Tab}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Reference_Tab}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} File Format;File Format,TADPOLE input files;TADPOLE Reference Field;TADPOLE Reference Tab}
+\fs36\cf1 TADPOLE Reference Tab\plain\fs24 
+\par \pard \fs20 
+\par To complete the TADPOLE calculation, the complete intensity and phase of the reference field must be known.  The Reference tab allows the user to select the source for the reference field.
+\par 
+\par \{bmc bm49.SHG\}
+\par 
+\par One way to completely characterize the intensity and phase of a reference pulse is with FROG.  Anticipating that users might measure the FROG trace of the reference pulse at the same time as the TADPOLE spectrum of a weaker pulse, the TADPOLE algorithm allows the user to select the pulse previously retrieved with FROG as the reference.  If the FROG algorithm has not been run, the selection is forced to be "Read In from File," and a file containing the reference field must be specified.
+\par \pard 
+\par The reference field must be in the standard format for \uldb FROG field output files\plain\fs20 {\v 5YAK3U}, such as E.dat and Ek.dat.
+\par \page
+{\up $}{\footnote\pard\plain{\up $} TADPOLE Results Window}
+{\up #}{\footnote\pard\plain{\up #} TADPOLE_Results_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} TADPOLE Results Window}
+\fs36\cf1 TADPOLE Results Window\plain\fs24 
+\par \pard \fs20 
+\par Each time the TADPOLE algorithm executes, it calculates the widths etc. for the calculated pulse.  The calculated parameters are the same as those in the \uldb FROG Results window\plain\fs20 {\v Results_Window}.
+\par 
+\par \{bmc bm50.BMP\}
+\par 
+\par When the "Quit" button is clicked, the TADPOLE windows are closed, and the output files are written to the directory specified in the \uldb TADPOLE Outputs\plain\fs20 {\v TADPOLE_Output_Tab} tab.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} Test Calibration Window}
+{\up #}{\footnote\pard\plain{\up #} Test_Calibration_Window}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} Test Field;XFROG Test Calibration}
+\fs36\cf1 Test Calibration Window\plain\fs24 
+\par \pard \fs20 
+\par This window is used in \uldb XFROG\plain\fs20 {\v XFROG_Overview} to enter the source for the test field.
+\par 
+\par \{bmc bm51.SHG\}
+\par 
+\par The algorithm calibrations of Grid Size and Nonlinearity work similarly to the \uldb FROG algorithm calibrations\plain\fs20 {\v FROGAlgorithm_calibations}.  The \uldb XFROG nonlinearity\plain\fs20 {\v XFROG_Nonlinearities} selections are slightly different from FROG.
+\par 
+\par The different tabs of \uldb Initial Field\plain\fs20 {\v Initial_Field_Generation}, \uldb Outputs\plain\fs20 {\v Outputs_Tab}, \uldb First Guess\plain\fs20 {\v First_Guess_Field}, and \uldb Strategies\plain\fs20 {\v Strategies_Tab} are similar to their FROG counterparts.
+\par 
+\par After OK is selected, the \uldb Reference Field Calibrations Window\plain\fs20 {\v Reference_Field_Calibrations} will appear.
+\par \page
+{\up $}{\footnote\pard\plain{\up $} XFROG Algorithm}
+{\up #}{\footnote\pard\plain{\up #} XFROG_Algorithm}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} XFROG Algorithm}
+\fs36\cf1 XFROG Algorithm\plain\fs24 
+\par \pard 
+\par \fs20 The operation of the XFROG algorithm is very similar to that of the FROG algorithm.  There are a few notable differences:
+\par \fs24 
+\par \pard\li715\fi-355 \b\fs20 Two sets of calibrations\plain\fs20  - the calibrations for both the test and reference pulse must be entered.  The XFROG algorithm presents two windows for this purpose.\fs24 
+\par \fs20 
+\par \b New Set of Nonlinearities\plain\fs20  - While the 3rd-order nonlinearities are relatively unchanged, the set of second-order nonlinearities is changed.  Second-harmonic generation is now more aptly named sum-frequency generation.  And there are two more parametric downconversion processed, named Difference Frequency Generation (1 and 2).
+\par \pard\li715\fi-355 
+\par \b Reduced Set of Strategies\plain\fs20  - Currently only the basic FROG, the expo, and the XFROG projections \uldb strategies\plain\fs20 {\v Strategies_Tab} are available.  \uldb Shortcuts\plain\fs20 {\v 1752HXP} are available in the XFROG projection algorithm.
+\par 
+\par \fs24 
+\par \pard \b\fs28 Algorithm Description\plain\fs24 
+\par 
+\par \pard\li715\fi-355 \uldb \fs20 Test Field Calibrations\plain\fs20 {\v Test_Calibration_Window} - sets the algorithm parameters, and the source of the test field or original XFROG trace.
+\par 
+\par \uldb Reference Field Calibrations\plain\fs20 {\v Reference_Field_Calibrations} - determines the source of the reference field.
+\par 
+\par \uldb Algorithm Windows\plain\fs20 {\v FROG_Pulse_Retrieval_Windows} - the same set of algorithm windows seen in the FROG algorithm are used in XFROG.\fs24 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} XFROG Nonlinearities}
+{\up #}{\footnote\pard\plain{\up #} XFROG_Nonlinearities}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} DFG;SFG;XFROG Nonlinearities}
+\fs36\cf1 XFROG Nonlinearities\plain\fs24 
+\par \pard \fs20 
+\par In XFROG, a well-characterized reference pulse is used to measure a weak unknown pulse.  We call the pulse to be measured the test pulse, indicated by the subscript \i t\plain\fs20 , while the reference pulse is indicated by the subscript \i r\plain\fs20 .
+\par 
+\par The nonlinearities in XFROG are slightly different from \uldb FROG nonlinearities\plain\fs20 {\v Optical_Nonlinearity}, including some nonlinear interactions that are not available in FROG.
+\par \fs24 
+\par \b\fs28 Nonlinear Optical Interactions\plain\fs24 
+\par \fs20 
+\par There are four possible types of nonlinear interactions, three third order and one second order. \fs24 
+\par \pard\sb115 \b\fs20 Third order interactions\plain\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \ul\fs20 PG\plain\fs20  (Polarization Gate) - commonly generated by Kerr-effect-induced polarization rotation in an isotropic medium.  Can also be generated by so-called "transient-gate" FROG (using a BOXCARS-type phase-matching geometry) or by a cascaded second-order interaction.
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm52.WMF\}\f2\fs24 
+\par \pard\li715\fi-355 \fs20 
+\par \ul SD\plain\fs20  (Self-Diffraction) - generated by a three-wave mixing geometry (two input beams write a grating in the material, and one of the beams scatters off this grating to produce the [third] output beam).  Can also be generated in a transient-grating geometry or cascaded second-order interactions.
+\par \fs24 
+\par \pard\qc \f4\fs20 \{bmc bm53.WMF\}\f2\fs24 
+\par \pard\li715\fi-355 \fs20 
+\par \ul THG\plain\fs20  (Third-Harmonic Generation) - uses a two-input-beam geometry where the signal beam is the third harmonic of the input beam.  Can also be generated by cascaded second-order interactions.\fs24 
+\par \pard 
+\par \pard\qc \f4\fs20 \{bmc bm54.WMF\}\f2\fs24 
+\par \pard 
+\par \pard\sb115 \b\fs20 Second order interactions\plain\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \ul\fs20 SFG\plain\fs20  (Sum Frequency Generation) - uses a standard autocorrelation geometry in a frequency-doubling crystal, where the two beams mix together to form the sum frequency.\fs24 
+\par \pard 
+\par \pard\qc \f4\fs20 \{bmc bm55.WMF\}\f2\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \ul\fs20 DFG1\plain\fs20  (Difference Frequency Generation Type 1) - Uses a parametric downconversion process to find the difference frequency between the two beams.  In type 1 DFG, the test field is a higher frequency than the reference.\fs24 
+\par \pard 
+\par \pard\qc \f4\fs20 \{bmc bm56.WMF\}\f2\fs24 
+\par \pard 
+\par \pard\li715\fi-355 \ul\fs20 DFG2\plain\fs20  (Difference Frequency Generation Type 2) - Same as DFG1, but the reference field is a higher frequency than the test field.\fs24 
+\par \pard 
+\par \pard\qc \f4\fs20 \{bmc bm57.WMF\}\f2\fs24 
+\par \pard 
+\par \page
+{\up $}{\footnote\pard\plain{\up $} XFROG Overview}
+{\up #}{\footnote\pard\plain{\up #} XFROG_Overview}
+\pard\keepn {\up K}{\footnote\pard\plain{\up K} XFROG Overview}
+\fs36\cf1 XFROG Overview\plain\fs24 
+\par \pard \fs20 
+\par XFROG is a variation of FROG useful for measuring very weak pulses.  Like \uldb TADPOLE\plain\fs20 {\v TADPOLE_Overview}, XFROG requires the existence of a well-characterized reference pulse.  Unlike TADPOLE, however, XFROG does not require that the spectra of the test pulse (pulse being measured) and the reference pulse overlap.
+\par 
+\par In XFROG, the test and reference pulses are mixed in a nonlinear optical interaction.  Whereas in FROG the pulse acts as a gate for itself, in XFROG the reference pulse serves as the gate.  For example, in the case of the second-order nonlinearity, FROG can be described as a frequency-resolved autocorrelation, while XFROG is a frequency-resolved cross-correlation.
+\par \pard 
+\par There are no restrictions on wavelengths of the test or reference beams, so long as an instantaneous nonlinear optical interaction is available.  The signal beam generated by the interaction of the test and reference beams is used as the input to a spectrometer, and the spectra are measured for various values of the time delay between the test and reference beams.  See the \uldb literature\plain\fs20 {\v Publications} for more details.
+\par 
+\par \uldb XFROG Algorithm\plain\fs20 {\v XFROG_Algorithm}\fs24 
+\par }

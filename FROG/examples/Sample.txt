@@ -1,0 +1,24 @@
+EXPERIMENTAL DATA
+
+In order to test the experimental version of the algorithm, a sample file of experimental data is included.  This file should be installed in the \Samples directory in the program files directory (usually C:\Program Files\Femtosoft Technologies).
+
+File: 042194.12h
+
+In order to retrieve the FROG trace from this data set, use these settings:
+
+SHG FROG
+Experimental Data
+128 Points
+
+Select the file.  Click the "Use Header Information" on the Experimental Data Tab.  All of the parameter values should fill in.  Click OK.
+
+Now the raw experiemental data is displayed on the screen.  As this is a low noise trace, there is no need to do any noise subtraction or filtering.  Simply click "Grid Data," and begin the retrieval algorithm.
+
+This data set should retrieve to a very low error.  By 100 iterations, the error should be down to less than 0.0010.  After 300 iterations I was able to achieve 0.000927.  The final pulse had a FWHM of 149 fs and a spectral FWHM of 5.46 nm.
+
+
+ELECTRIC FIELD
+
+In order to test the Electric Field Read In, use the file "SampleE.dat" in the samples directory.  Select 128 points and "Read in Electric Field."  The choice of nonlinearity is left to the user.
+
+In the "Calibrations for Field Read-In" select "Use Header Information."  The values will appear in the windows.  Click OK and begin the algorithm.

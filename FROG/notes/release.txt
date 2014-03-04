@@ -1,0 +1,14 @@
+Program Updates
+- update AboutBox
+- update MainForm
+- license file
+- Version in install script
+
+To Release
+- Commit all above changes
+- Cut Tag
+- Update all above locations to next dev version
+- Switch to tag
+- build F, FX, FT, FTX (see MainForm, line 75), for 32-bit and 64-bit
+  - Update the Type in the install script each time
+  - Can create installer from right-click in window menu, or right-click "Run As NSIS script"

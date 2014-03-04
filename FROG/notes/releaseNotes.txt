@@ -1,0 +1,13 @@
+3.2.5
+- Programatically create log dir if not present - prevents "file not found" error on startup
+
+3.2.4
+- Never output negative delta t values in a.dat and arecon.dat in Fsoft compatible mode
+- Add box to select center of mass or peak wavelength centering
+- Increased the number of available grid points to 8192
+- Changed help system to chm for compatibility with Vista and Win7
+- Point default output directory to /user/Femtosoft/FROG
+
+3.2.3 (Sept 25, 2011)
+- Make NSIS installer that works on Win7/64
+- bug: help file dir is wrong 
