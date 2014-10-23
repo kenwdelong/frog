@@ -9,6 +9,7 @@ If you don't want to buy Delphi and compile the code, binaries should be availab
 
 Femtosoft has closed its doors, but I thought it was something of a crime if the code remained locked away on my hard disk.  If you enjoy it I'm always happy to receive a donation!  :-)  I give this as a gift to the scientific community!
 
+<div>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_donations">
 <input type="hidden" name="business" value="kenwdelong@yahoo.com">
@@ -20,3 +21,6 @@ Femtosoft has closed its doors, but I thought it was something of a crime if the
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
+</div>
+
+Thanks!
